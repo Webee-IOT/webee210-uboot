@@ -256,7 +256,7 @@ int board_eth_init(bd_t *bis)
 #ifdef CONFIG_DISPLAY_BOARDINFO
 int checkboard(void)
 {
-	printf("\nBoard:   Webee_210\n");
+	printf("\nBoard:   Webee_210_V2\n");
 	return (0);
 }
 #endif
