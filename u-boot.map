@@ -29,1064 +29,1064 @@ Linker script and memory map
                 0x00000000                . = 0x0
                 0x00000000                . = ALIGN (0x4)
 
-.text           0x33e00000    0x2855c
+.text           0x23e00000    0x2855c
  arch/arm/cpu/armv7/start.o(.text)
- .text          0x33e00000      0x500 arch/arm/cpu/armv7/start.o
-                0x33e00000                _start
-                0x33e00040                _end_vect
-                0x33e00040                _TEXT_BASE
-                0x33e00044                _bss_start_ofs
-                0x33e00048                _image_copy_end_ofs
-                0x33e0004c                _bss_end_ofs
-                0x33e00050                _end_ofs
-                0x33e00054                IRQ_STACK_START_IN
-                0x33e00100                relocate_code
+ .text          0x23e00000      0x500 arch/arm/cpu/armv7/start.o
+                0x23e00000                _start
+                0x23e00040                _end_vect
+                0x23e00040                _TEXT_BASE
+                0x23e00044                _bss_start_ofs
+                0x23e00048                _image_copy_end_ofs
+                0x23e0004c                _bss_end_ofs
+                0x23e00050                _end_ofs
+                0x23e00054                IRQ_STACK_START_IN
+                0x23e00100                relocate_code
  *(.text)
- .text          0x33e00500       0xd0 arch/arm/cpu/armv7/libarmv7.o
-                0x33e00500                invalidate_dcache_all
-                0x33e00504                flush_dcache_all
-                0x33e00508                invalidate_dcache_range
-                0x33e0050c                flush_dcache_range
-                0x33e00510                arm_init_before_mmu
-                0x33e00514                flush_cache
-                0x33e00518                invalidate_icache_all
-                0x33e00530                __v7_outer_cache_enable
-                0x33e00534                __v7_outer_cache_disable
-                0x33e00538                __v7_outer_cache_flush_all
-                0x33e00538                v7_outer_cache_flush_all
-                0x33e0053c                v7_outer_cache_inval_all
-                0x33e0053c                __v7_outer_cache_inval_all
-                0x33e00540                v7_outer_cache_flush_range
-                0x33e00540                __v7_outer_cache_flush_range
-                0x33e00544                __v7_outer_cache_inval_range
-                0x33e00544                v7_outer_cache_inval_range
-                0x33e00548                save_boot_params_default
-                0x33e00548                save_boot_params
-                0x33e0054c                cleanup_before_linux
-                0x33e0056c                sdelay
-                0x33e00578                sr32
-                0x33e0059c                wait_on_value
- .text          0x33e005d0      0x534 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
-                0x33e005d0                arch_cpu_init
-                0x33e00600                get_device_type
-                0x33e00610                print_cpuinfo
-                0x33e006c8                timer_init
-                0x33e006fc                reset_timer_masked
-                0x33e00718                get_timer_masked
-                0x33e0075c                get_timer
-                0x33e00770                __udelay
-                0x33e00804                get_ticks
-                0x33e00814                get_tbclk
-                0x33e0081c                s5p_config_sromc
-                0x33e008a8                pwm_enable
-                0x33e008dc                pwm_disable
-                0x33e0090c                pwm_config
-                0x33e00a38                pwm_init
- *fill*         0x33e00b04       0x1c 00
- .text          0x33e00b20      0x33c arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
-                0x33e00b5c                get_pll_clk
-                0x33e00d18                get_arm_clk
-                0x33e00d88                get_pwm_clk
-                0x33e00dac                get_uart_clk
-                0x33e00dd0                set_mmc_clk
-                0x33e00de0                v7_outer_cache_enable
-                0x33e00df4                v7_outer_cache_disable
-                0x33e00e20                reset_cpu
- .text          0x33e00e5c      0x868 arch/arm/lib/libarm.o
-                0x33e00ed0                coloured_LED_init
-                0x33e00ed0                __coloured_LED_init
-                0x33e00ed4                red_LED_on
-                0x33e00ed4                __red_LED_on
-                0x33e00ed8                __red_LED_off
-                0x33e00ed8                red_LED_off
-                0x33e00edc                green_LED_on
-                0x33e00edc                __green_LED_on
-                0x33e00ee0                __green_LED_off
-                0x33e00ee0                green_LED_off
-                0x33e00ee4                __yellow_LED_on
-                0x33e00ee4                yellow_LED_on
-                0x33e00ee8                __yellow_LED_off
-                0x33e00ee8                yellow_LED_off
-                0x33e00eec                blue_LED_on
-                0x33e00eec                __blue_LED_on
-                0x33e00ef0                blue_LED_off
-                0x33e00ef0                __blue_LED_off
-                0x33e00ef4                __dram_init_banksize
-                0x33e00f10                board_init_f_nand
-                0x33e00f14                board_init_r
-                0x33e0103c                hang
-                0x33e01050                board_init_f
-                0x33e01180                arch_lmb_reserve
-                0x33e011a4                do_bootm_linux
-                0x33e0137c                __flush_cache
-                0x33e01380                __flush_dcache_all
-                0x33e0138c                enable_caches
-                0x33e0138c                __enable_caches
-                0x33e013c8                __arm_init_before_mmu
-                0x33e013cc                icache_enable
-                0x33e013e4                icache_disable
-                0x33e013fc                icache_status
-                0x33e01410                dcache_enable
-                0x33e01414                dcache_disable
-                0x33e01418                dcache_status
-                0x33e01420                interrupt_init
-                0x33e0143c                enable_interrupts
-                0x33e01440                disable_interrupts
-                0x33e01448                bad_mode
-                0x33e01458                show_regs
-                0x33e01598                do_undefined_instruction
-                0x33e015bc                do_software_interrupt
-                0x33e015e0                do_prefetch_abort
-                0x33e01604                do_data_abort
-                0x33e01628                do_not_used
-                0x33e0164c                do_fiq
-                0x33e01670                do_irq
-                0x33e01694                do_reset
- .text          0x33e016c4    0x1152c common/libcommon.o
-                0x33e016c4                do_bdinfo
-                0x33e01848                do_go_exec
-                0x33e01860                do_go
-                0x33e018ec                do_bootd
-                0x33e01c34                do_iminfo
-                0x33e02174                arch_preboot_os
-                0x33e02174                __arch_preboot_os
-                0x33e02178                do_bootm_subcommand
-                0x33e023c4                do_bootm
-                0x33e0265c                bootm_maybe_autostart
-                0x33e026d0                do_coninfo
-                0x33e02788                do_echo
-                0x33e02898                do_bootelf_exec
-                0x33e028dc                valid_elf_image
-                0x33e02928                do_bootvx
-                0x33e02bc0                do_bootelf
-                0x33e02d14                do_exit
-                0x33e02d44                do_fat_fsinfo
-                0x33e02e1c                do_fat_ls
-                0x33e02f24                do_fat_fsload
-                0x33e030a8                do_flinfo
-                0x33e030b0                do_flerase
-                0x33e030b8                do_protect
-                0x33e03108                do_help
-                0x33e031dc                binary_test
-                0x33e03398                do_itest
-                0x33e03430                buzzer_on
-                0x33e03460                buzzer_off
-                0x33e03478                delay
-                0x33e0349c                hareware_init
-                0x33e034b4                led_test
-                0x33e038ec                do_load_serial
-                0x33e039c8                send_pad
-                0x33e039f4                ktrans
-                0x33e03a14                chk1
-                0x33e03a3c                s1_sendpacket
-                0x33e03a60                send_ack
-                0x33e03ac0                send_nack
-                0x33e03b20                k_data_init
-                0x33e03b40                k_data_save
-                0x33e03b64                k_data_restore
-                0x33e03b88                k_data_char
-                0x33e03bd8                handle_send_packet
-                0x33e03d9c                do_load_serial_bin
-                0x33e041f8                do_mem_crc
-                0x33e042a0                do_mem_base
-                0x33e042e4                do_mem_mtest
-                0x33e04488                do_mem_loop
-                0x33e04580                do_mem_cp
-                0x33e04658                do_mem_cmp
-                0x33e047e8                do_mem_mw
-                0x33e049f0                do_mem_nm
-                0x33e04a14                do_mem_mm
-                0x33e04a38                do_mem_md
-                0x33e04b10                main_menu_usage
-                0x33e04bb4                awaitkey
-                0x33e04bd0                menu_shell
-                0x33e04f80                do_menu
-                0x33e04f90                do_sleep
-                0x33e05010                do_mmcops
-                0x33e05440                do_mmcinfo
-                0x33e06004                mtd_device_validate
-                0x33e06034                device_find
-                0x33e065ec                mtd_id_parse
-                0x33e066fc                find_dev_and_part
-                0x33e068b4                mtdparts_init
-                0x33e06ea8                do_mtdparts
-                0x33e074d4                do_chpart
-                0x33e0782c                do_nandboot
-                0x33e07cdc                do_nand
-                0x33e08720                do_ping
-                0x33e08a5c                do_nfs
-                0x33e08a68                do_dhcp
-                0x33e08a74                do_tftpb
-                0x33e08a80                do_bootp
-                0x33e08d94                do_env_save
-                0x33e08e58                do_env_print
-                0x33e08edc                get_env_id
-                0x33e08eec                _do_env_set
-                0x33e092b4                do_env_set
-                0x33e092d0                setenv
-                0x33e09540                envmatch
-                0x33e095a4                getenv_f
-                0x33e09660                getenv
-                0x33e096cc                do_env_edit
-                0x33e09734                iis_init
-                0x33e097a8                iic_write
-                0x33e09864                iic_init
-                0x33e0989c                wm8960_init
-                0x33e0997c                sound_test
-                0x33e099ac                source
-                0x33e09ad0                do_source
-                0x33e09b14                do_false
-                0x33e09b1c                do_true
-                0x33e09b24                do_test
-                0x33e09f94                putc3
-                0x33e09fb4                uart3_test
-                0x33e0a044                do_usbd_dnw
-                0x33e0a150                do_version
-                0x33e0a188                do_imgextract
-                0x33e0a460                find_cmd_tbl
-                0x33e0a4fc                find_cmd
-                0x33e0a524                cmd_usage
-                0x33e0a580                _do_help
-                0x33e0a708                cmd_get_data_size
-                0x33e0a7fc                serial_printf
-                0x33e0a840                fgetc
-                0x33e0a86c                ftstc
-                0x33e0a898                fputc
-                0x33e0a8c0                fputs
-                0x33e0a8e8                fprintf
-                0x33e0a934                getc
-                0x33e0a94c                tstc
-                0x33e0a964                putc
-                0x33e0a980                puts
-                0x33e0a99c                printf
-                0x33e0a9e0                vprintf
-                0x33e0aa18                ctrlc
-                0x33e0aa64                disable_ctrlc
-                0x33e0aa7c                had_ctrlc
-                0x33e0aa8c                clear_ctrlc
-                0x33e0aaa0                dbg
-                0x33e0aaac                search_device
-                0x33e0aad4                console_assign
-                0x33e0ab14                console_init_f
-                0x33e0ab24                stdio_print_current_devices
-                0x33e0abdc                console_init_r
-                0x33e0acc4                sbrk
-                0x33e0ad20                mem_malloc_init
-                0x33e0ad40                malloc_trim
-                0x33e0ae10                free
-                0x33e0b034                cfree
-                0x33e0b038                malloc
-                0x33e0b5f0                calloc
-                0x33e0b6d0                memalign
-                0x33e0b7e0                pvalloc
-                0x33e0b7f8                valloc
-                0x33e0b804                realloc
-                0x33e0bc54                malloc_usable_size
-                0x33e0bc94                mallopt
-                0x33e0bd08                env_get_addr
-                0x33e0bd2c                env_get_char_memory
-                0x33e0bd3c                env_get_char
-                0x33e0bd70                set_default_env
-                0x33e0be10                env_import
-                0x33e0bee0                env_relocate
-                0x33e0bf10                env_get_char_spec
-                0x33e0bf1c                env_init
-                0x33e0bf38                writeenv
-                0x33e0c008                saveenv
-                0x33e0c174                readenv
-                0x33e0c228                env_relocate_spec
-                0x33e0c270                get_version
-                0x33e0c278                jumptable_init
-                0x33e0c49c                do_showvar
-                0x33e0c99c                simple_itoa
-                0x33e0c9f4                get_local_var
-                0x33e0cbc0                set_local_var
-                0x33e0cd78                unset_local_var
-                0x33e0ce18                new_pipe
-                0x33e0ce88                reserved_word
-                0x33e0d1b0                mapset
-                0x33e0d1d4                update_ifs_map
-                0x33e0d244                parse_string_outer
-                0x33e0e13c                parse_file_outer
-                0x33e0e180                u_boot_hush_start
-                0x33e0e214                image_check_hcrc
-                0x33e0e264                image_check_dcrc
-                0x33e0e2a4                image_multi_count
-                0x33e0e2c4                image_multi_getimg
-                0x33e0e348                getenv_yesno
-                0x33e0e370                getenv_bootm_low
-                0x33e0e3a0                getenv_bootm_size
-                0x33e0e3fc                getenv_bootm_mapsize
-                0x33e0e42c                memmove_wd
-                0x33e0e438                genimg_print_size
-                0x33e0e468                get_table_entry_name
-                0x33e0e494                genimg_get_os_name
-                0x33e0e4ac                genimg_get_arch_name
-                0x33e0e4c4                genimg_get_type_name
-                0x33e0e4dc                genimg_get_comp_name
-                0x33e0e4f4                image_print_contents
-                0x33e0e66c                get_table_entry_id
-                0x33e0e6b8                genimg_get_os_id
-                0x33e0e6d0                genimg_get_arch_id
-                0x33e0e6e8                genimg_get_type_id
-                0x33e0e700                genimg_get_comp_id
-                0x33e0e718                genimg_get_format
-                0x33e0e730                genimg_get_image
-                0x33e0e734                genimg_has_config
-                0x33e0e73c                boot_get_ramdisk
-                0x33e0e96c                boot_ramdisk_high
-                0x33e0ec5c                __show_boot_progress
-                0x33e0ec5c                show_boot_progress
-                0x33e0ec60                readline_into_buffer
-                0x33e0f4b8                readline
-                0x33e0f4d4                parse_line
-                0x33e0f564                run_command
-                0x33e0f8f8                main_loop
-                0x33e0fa28                do_run
-                0x33e0fa9c                get_ram_size
-                0x33e0fc00                srec_decode
-                0x33e0fe78                serial_register
-                0x33e0fe90                serial_stdio_init
-                0x33e0ff20                serial_assign
-                0x33e0ff6c                serial_initialize
-                0x33e0ffbc                serial_reinit_all
-                0x33e0ffe8                serial_init
-                0x33e10028                serial_setbrg
-                0x33e10060                serial_getc
-                0x33e100a0                serial_tstc
-                0x33e100e0                serial_putc
-                0x33e10120                serial_puts
-                0x33e10160                stdio_get_list
-                0x33e1016c                stdio_get_by_name
-                0x33e101c0                stdio_clone
-                0x33e10208                stdio_register
-                0x33e1024c                stdio_init
-                0x33e102dc                s3c_usb_init_phy
-                0x33e1031c                s3c_usb_phy_off
-                0x33e10348                s3c_usb_core_soft_reset
-                0x33e10364                s3c_usb_wait_cable_insert
-                0x33e103b0                s3c_usb_init_core
-                0x33e103cc                s3c_usb_check_current_mode
-                0x33e103e0                s3c_usb_set_soft_disconnect
-                0x33e103f4                s3c_usb_clear_soft_disconnect
-                0x33e10408                s3c_usb_init_device
-                0x33e10430                s3c_usbctl_init
-                0x33e104b4                s3c_usbc_activate
-                0x33e104bc                s3c_usb_stop
-                0x33e104d0                s3c_usb_print_pkt
-                0x33e1051c                s3c_usb_verify_checksum
-                0x33e105c4                s3c_usb_set_inep_xfersize
-                0x33e105f8                s3c_usb_set_outep_xfersize
-                0x33e1062c                s3c_usb_write_ep0_fifo
-                0x33e10678                s3c_usb_write_in_fifo
-                0x33e106c4                s3c_usb_read_out_fifo
-                0x33e1070c                s3c_usb_get_desc
-                0x33e1081c                s3c_usb_clear_feature
-                0x33e1088c                s3c_usb_set_feature
-                0x33e109e4                s3c_usb_get_status
-                0x33e10a5c                s3c_usb_ep0_int_hndlr
-                0x33e10bc8                s3c_usb_set_otherspeed_conf_desc
-                0x33e10cbc                s3c_usb_transfer_ep0
-                0x33e11608                s3c_usb_int_bulkin
-                0x33e116d0                s3c_usb_upload_start
-                0x33e11838                s3c_usb_download_start
-                0x33e1196c                s3c_usb_download_continue
-                0x33e11a18                s3c_usb_int_bulkout
-                0x33e11a40                s3c_usb_dma_in_done
-                0x33e11ae0                s3c_usb_dma_out_done
-                0x33e11b8c                s3c_usb_set_all_outep_nak
-                0x33e11bb4                s3c_usb_clear_all_outep_nak
-                0x33e11bdc                s3c_usb_set_max_pktsize
-                0x33e11c18                s3c_usb_set_endpoint
-                0x33e11c64                s3c_usb_set_descriptors
-                0x33e11db8                s3c_usb_check_speed
-                0x33e11dd0                s3c_usb_clear_dnfile_info
-                0x33e11dec                s3c_usb_clear_upfile_info
-                0x33e11e08                s3c_usb_check_setconf
-                0x33e11e20                s3c_usb_set_opmode
-                0x33e11e8c                s3c_usb_reset
-                0x33e11ee8                s3c_usb_set_init
-                0x33e11f44                s3c_usb_pkt_receive
-                0x33e11fc4                s3c_usb_transfer
-                0x33e120b4                s3c_udc_int_hndlr
-                0x33e12158                lcd_init
-                0x33e12270                lcd_draw_pixel
-                0x33e12284                lcd_clear_screen
-                0x33e122c4                lcd_draw_picture
-                0x33e12320                WB_lcd_init_and_display
-                0x33e12338                CYGACC_COMM_IF_GETC_TIMEOUT
-                0x33e12630                CYGACC_COMM_IF_PUTC
-                0x33e12638                parse_num
-                0x33e12754                xyzModem_stream_open
-                0x33e1289c                xyzModem_stream_read
-                0x33e12aec                xyzModem_stream_close
-                0x33e12b3c                xyzModem_stream_terminate
-                0x33e12bd0                xyzModem_error
- .text          0x33e12bf0      0x8e4 disk/libdisk.o
-                0x33e12bf0                get_dev
-                0x33e12c50                dev_print
-                0x33e12e68                init_part
-                0x33e12e84                get_partition_info
-                0x33e12eac                print_part
-                0x33e13420                test_part_dos
-                0x33e13488                print_part_dos
-                0x33e134b4                get_partition_info_dos
- .text          0x33e134d4      0x254 drivers/gpio/libgpio.o
-                0x33e134d4                s5p_gpio_cfg_pin
-                0x33e134f0                s5p_gpio_direction_output
-                0x33e13528                s5p_gpio_direction_input
-                0x33e13530                s5p_gpio_set_value
-                0x33e13550                s5p_gpio_get_value
-                0x33e13568                s5p_gpio_set_pull
-                0x33e1358c                s5p_gpio_set_drv
-                0x33e135b0                s5p_gpio_set_rate
-                0x33e135d8                s5p_gpio_get_bank
-                0x33e135f8                s5p_gpio_get_pin
-                0x33e13610                gpio_request
-                0x33e13618                gpio_direction_input
-                0x33e1365c                gpio_direction_output
-                0x33e136a4                gpio_get_value
-                0x33e136ec                gpio_set_value
- .text          0x33e13728     0x1cb0 drivers/mmc/libmmc.o
-                0x33e13744                __board_mmc_getcd
-                0x33e13744                board_mmc_getcd
-                0x33e1374c                mmc_send_cmd
-                0x33e1375c                mmc_send_status
-                0x33e13824                mmc_set_blocklen
-                0x33e1385c                find_mmc_device
-                0x33e13bcc                mmc_read_blocks
-                0x33e13d50                mmc_go_idle
-                0x33e13da4                sd_send_op_cond
-                0x33e13f08                mmc_send_op_cond
-                0x33e14074                mmc_send_ext_csd
-                0x33e140c8                mmc_switch
-                0x33e14120                mmc_change_freq
-                0x33e141d4                mmc_switch_part
-                0x33e14210                sd_switch
-                0x33e14280                sd_change_freq
-                0x33e14460                mmc_set_ios
-                0x33e14470                mmc_set_clock
-                0x33e1449c                mmc_set_bus_width
-                0x33e144b0                mmc_startup
-                0x33e14aec                mmc_send_if_cond
-                0x33e14b6c                mmc_register
-                0x33e14bf0                mmc_get_dev
-                0x33e14c04                mmc_init
-                0x33e14cbc                cpu_mmc_init
-                0x33e14cc4                print_mmc_devices
-                0x33e14d28                get_mmc_num
-                0x33e14d38                mmc_initialize
-                0x33e152ac                s5p_mmc_init
- .text          0x33e153d8      0x1dc drivers/mtd/libmtd.o
-                0x33e153d8                add_mtd_device
-                0x33e15448                del_mtd_device
-                0x33e15498                get_mtd_device
-                0x33e15514                get_mtd_device_nm
-                0x33e15588                put_mtd_device
- .text          0x33e155b4     0x6dbc drivers/mtd/nand/libnand.o
-                0x33e155b4                nand_init
-                0x33e17658                nand_wait_ready
-                0x33e18248                nand_erase_nand
-                0x33e18644                nand_scan_ident
-                0x33e18c38                nand_scan_tail
-                0x33e191c4                nand_scan
-                0x33e191e8                nand_release
-                0x33e1a1a0                nand_update_bbt
-                0x33e1a45c                nand_scan_bbt
-                0x33e1a90c                nand_default_bbt
-                0x33e1a9cc                nand_isbad_bbt
-                0x33e1aa20                nand_calculate_ecc
-                0x33e1ab10                nand_correct_data
-                0x33e1acc8                nand_erase_opts
-                0x33e1b03c                nand_write_skip_bad
-                0x33e1b2c8                nand_read_skip_bad
-                0x33e1b630                s3c_nand_enable_hwecc_8bit
-                0x33e1b78c                s3c_nand_read_oob_8bit
-                0x33e1b7d4                s3c_nand_write_oob_8bit
-                0x33e1bc50                s3c_nand_correct_data_8bit
-                0x33e1bd88                s3c_nand_calculate_ecc_8bit
-                0x33e1bea4                s3c_nand_read_page_8bit
-                0x33e1bf98                s3c_nand_write_page_8bit
-                0x33e1c064                board_nand_init
- .text          0x33e1c370      0x9d8 drivers/net/libnet.o
-                0x33e1ccc4                dm9000_initialize
- .text          0x33e1cd48        0x0 drivers/pcmcia/libpcmcia.o
- .text          0x33e1cd48        0x0 drivers/rtc/librtc.o
- .text          0x33e1cd48      0x268 drivers/serial/libserial.o
-                0x33e1cd84                serial_setbrg_dev
-                0x33e1cdcc                s5p_serial3_setbrg
-                0x33e1cdd4                s5p_serial2_setbrg
-                0x33e1cddc                s5p_serial1_setbrg
-                0x33e1cde4                s5p_serial0_setbrg
-                0x33e1cdec                serial_init_dev
-                0x33e1ce2c                s5p_serial3_init
-                0x33e1ce34                s5p_serial2_init
-                0x33e1ce3c                s5p_serial1_init
-                0x33e1ce44                s5p_serial0_init
-                0x33e1ce4c                serial_getc_dev
-                0x33e1ce90                s5p_serial3_getc
-                0x33e1ce98                s5p_serial2_getc
-                0x33e1cea0                s5p_serial1_getc
-                0x33e1cea8                s5p_serial0_getc
-                0x33e1ceb0                serial_putc_dev
-                0x33e1cf00                s5p_serial3_putc
-                0x33e1cf08                s5p_serial2_putc
-                0x33e1cf10                s5p_serial1_putc
-                0x33e1cf18                s5p_serial0_putc
-                0x33e1cf20                serial_tstc_dev
-                0x33e1cf3c                s5p_serial3_tstc
-                0x33e1cf44                s5p_serial2_tstc
-                0x33e1cf4c                s5p_serial1_tstc
-                0x33e1cf54                s5p_serial0_tstc
-                0x33e1cf5c                serial_puts_dev
-                0x33e1cf84                s5p_serial3_puts
-                0x33e1cf8c                s5p_serial2_puts
-                0x33e1cf94                s5p_serial1_puts
-                0x33e1cf9c                s5p_serial0_puts
-                0x33e1cfa4                default_serial_console
- .text          0x33e1cfb0     0x17b8 fs/fat/libfat.o
-                0x33e1d6cc                fat_register_device
-                0x33e1d7e0                do_fat_read
-                0x33e1e254                file_fat_detectfs
-                0x33e1e3b4                file_fat_ls
-                0x33e1e3c4                file_fat_read
-                0x33e1e3fc                file_getfsname
-                0x33e1e414                file_cd
-                0x33e1e608                file_detectfs
-                0x33e1e648                file_ls
-                0x33e1e6d0                file_read
- .text          0x33e1e768     0x2cd0 lib/libgeneric.o
-                0x33e1e768                crc7
-                0x33e1e790                cyg_crc16
-                0x33e1e7d8                crc32_no_comp
-                0x33e1e8c0                crc32
-                0x33e1e8d4                crc32_wd
-                0x33e1e8d8                display_options
-                0x33e1e8f8                print_size
-                0x33e1ea28                print_buffer
-                0x33e1eb94                zfree
-                0x33e1eb9c                zalloc
-                0x33e1ebac                zunzip
-                0x33e1ecb4                gunzip
-                0x33e1ed74                hcreate_r
-                0x33e1ee20                hdestroy_r
-                0x33e1ee94                hstrstr_r
-                0x33e1ef40                hmatch_r
-                0x33e1efe0                hsearch_r
-                0x33e1f2c4                hdelete_r
-                0x33e1f34c                hexport_r
-                0x33e1f564                himport_r
-                0x33e1f960                lmb_dump_all
-                0x33e1f964                lmb_init
-                0x33e1f98c                lmb_add
-                0x33e1f990                lmb_free
-                0x33e1fab8                lmb_reserve
-                0x33e1fac0                lmb_overlaps_region
-                0x33e1fb14                __lmb_alloc_base
-                0x33e1fc44                lmb_alloc_base
-                0x33e1fc78                lmb_alloc
-                0x33e1fc80                lmb_is_reserved
-                0x33e1fce0                board_lmb_reserve
-                0x33e1fce0                __board_lmb_reserve
-                0x33e1fce4                __arch_lmb_reserve
-                0x33e1fce8                ldiv
-                0x33e1fd38                string_to_ip
-                0x33e1fdb4                qsort
-                0x33e1fea0                strcmp_compar
-                0x33e1feac                strmhz
-                0x33e1ff18                __div64_32
-                0x33e2000c                strcpy
-                0x33e20028                strncpy
-                0x33e20050                strcat
-                0x33e20080                strncat
-                0x33e200d0                strcmp
-                0x33e20100                strncmp
-                0x33e20148                strchr
-                0x33e2017c                strlen
-                0x33e20198                strrchr
-                0x33e201d4                strnlen
-                0x33e201fc                strdup
-                0x33e20230                strspn
-                0x33e20270                strpbrk
-                0x33e202ac                strtok
-                0x33e20328                strsep
-                0x33e2035c                strswab
-                0x33e203a8                memset
-                0x33e20410                bcopy
-                0x33e20438                memcpy
-                0x33e204ac                memmove
-                0x33e20504                memcmp
-                0x33e2053c                memscan
-                0x33e20564                strstr
-                0x33e205c4                memchr
-                0x33e205f8                udelay
-                0x33e20b0c                simple_strtoul
-                0x33e20bb8                strict_strtoul
-                0x33e20c30                simple_strtol
-                0x33e20c58                ustrtoul
-                0x33e20ccc                simple_strtoull
-                0x33e20dac                vsprintf
-                0x33e213d0                sprintf
-                0x33e213f4                panic
- .text          0x33e21438     0x267c lib/zlib/libz.o
-                0x33e21438                zcfree
-                0x33e21440                zcalloc
-                0x33e21448                inflate_fast
-                0x33e2199c                inflate_table
-                0x33e21f10                inflateReset
-                0x33e21f90                inflateInit2_
-                0x33e22098                inflateInit_
-                0x33e220ac                inflateEnd
-                0x33e22118                adler32
-                0x33e22414                inflate
- .text          0x33e23ab4     0x39e8 net/libnet.o
-                0x33e241ec                BootpRequest
-                0x33e243e4                DhcpRequest
-                0x33e24430                cpu_eth_init
-                0x33e24494                eth_parse_enetaddr
-                0x33e244f0                eth_getenv_enetaddr
-                0x33e24510                eth_setenv_enetaddr
-                0x33e24548                eth_getenv_enetaddr_by_index
-                0x33e2459c                eth_get_dev
-                0x33e245ac                eth_get_dev_by_name
-                0x33e24600                eth_get_dev_by_index
-                0x33e2464c                eth_get_dev_index
-                0x33e2469c                eth_write_hwaddr
-                0x33e247c8                eth_register
-                0x33e24850                eth_initialize
-                0x33e249e4                eth_halt
-                0x33e24a14                eth_send
-                0x33e24a4c                eth_rx
-                0x33e24a78                eth_try_another
-                0x33e24af4                eth_init
-                0x33e24bc4                eth_set_current
-                0x33e24c58                eth_get_name
-                0x33e24cfc                NetSetHandler
-                0x33e24d0c                NetSetTimeout
-                0x33e24d3c                NetStartAgain
-                0x33e24e48                NetSendPacket
-                0x33e24e4c                NetCksum
-                0x33e24e84                NetCksumOk
-                0x33e24ea8                NetEthHdrSize
-                0x33e24ee8                NetSetEther
-                0x33e24f8c                NetReceive
-                0x33e25498                ArpRequest
-                0x33e25598                ArpTimeoutCheck
-                0x33e2560c                PingSend
-                0x33e25754                NetSetIP
-                0x33e2584c                NetSendUDPPacket
-                0x33e2598c                copy_filename
-                0x33e259d0                random_port
-                0x33e259ec                ip_to_string
-                0x33e25a3c                VLAN_to_string
-                0x33e25a8c                string_to_VLAN
-                0x33e25ae4                getenv_VLAN
-                0x33e25af4                NetLoop
-                0x33e26a6c                NfsStart
-                0x33e271bc                TftpStart
- .text          0x33e2749c      0x260 board/samsung/webee210/libwebee210.o(webee210.o)
-                0x33e2749c                board_init
-                0x33e27548                dram_init
-                0x33e27568                dram_init_banksize
-                0x33e2758c                board_late_init
-                0x33e27594                board_eth_init
-                0x33e27598                checkboard
-                0x33e275b0                board_mmc_init
- .text          0x33e276fc      0x42c board/samsung/webee210/libwebee210.o(lowlevel_init.o)
-                0x33e27700                lowlevel_init
- *fill*         0x33e27b28       0x18 00
- .text          0x33e27b40      0x560 board/samsung/webee210/libwebee210.o(mem_setup.o)
-                0x33e27b40                mem_ctrl_asm_init
-                0x33e27eb8                cleanDCache
-                0x33e27ec4                cleanFlushDCache
-                0x33e27ed0                cleanFlushCache
-                0x33e27f60                v7_flush_dcache_all
-                0x33e28000                disable_l2cache
-                0x33e28020                enable_l2cache
-                0x33e28040                set_l2cache_auxctrl
-                0x33e28060                set_l2cache_auxctrl_cycle
- .text          0x33e280a0        0xc /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
-                0x33e280a0                raise
-                0x33e280a8                __aeabi_unwind_cpp_pr0
- .text          0x33e280ac      0x20c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
-                0x33e280ac                __udivsi3
-                0x33e280ac                __aeabi_uidiv
-                0x33e28298                __aeabi_uidivmod
- .text          0x33e282b8      0x240 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
-                0x33e282b8                __aeabi_idiv
-                0x33e282b8                __divsi3
-                0x33e284d8                __aeabi_idivmod
- .text          0x33e284f8       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
-                0x33e284f8                __aeabi_llsr
-                0x33e284f8                __lshrdi3
- .text          0x33e28514       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
-                0x33e28514                __ashrdi3
-                0x33e28514                __aeabi_lasr
- .text          0x33e28530       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
-                0x33e28530                __ashldi3
-                0x33e28530                __aeabi_llsl
- .text          0x33e2854c       0x10 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
-                0x33e2854c                __aeabi_ldiv0
-                0x33e2854c                __aeabi_idiv0
+ .text          0x23e00500       0xd0 arch/arm/cpu/armv7/libarmv7.o
+                0x23e00500                invalidate_dcache_all
+                0x23e00504                flush_dcache_all
+                0x23e00508                invalidate_dcache_range
+                0x23e0050c                flush_dcache_range
+                0x23e00510                arm_init_before_mmu
+                0x23e00514                flush_cache
+                0x23e00518                invalidate_icache_all
+                0x23e00530                __v7_outer_cache_enable
+                0x23e00534                __v7_outer_cache_disable
+                0x23e00538                __v7_outer_cache_flush_all
+                0x23e00538                v7_outer_cache_flush_all
+                0x23e0053c                v7_outer_cache_inval_all
+                0x23e0053c                __v7_outer_cache_inval_all
+                0x23e00540                v7_outer_cache_flush_range
+                0x23e00540                __v7_outer_cache_flush_range
+                0x23e00544                __v7_outer_cache_inval_range
+                0x23e00544                v7_outer_cache_inval_range
+                0x23e00548                save_boot_params_default
+                0x23e00548                save_boot_params
+                0x23e0054c                cleanup_before_linux
+                0x23e0056c                sdelay
+                0x23e00578                sr32
+                0x23e0059c                wait_on_value
+ .text          0x23e005d0      0x534 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
+                0x23e005d0                arch_cpu_init
+                0x23e00600                get_device_type
+                0x23e00610                print_cpuinfo
+                0x23e006c8                timer_init
+                0x23e006fc                reset_timer_masked
+                0x23e00718                get_timer_masked
+                0x23e0075c                get_timer
+                0x23e00770                __udelay
+                0x23e00804                get_ticks
+                0x23e00814                get_tbclk
+                0x23e0081c                s5p_config_sromc
+                0x23e008a8                pwm_enable
+                0x23e008dc                pwm_disable
+                0x23e0090c                pwm_config
+                0x23e00a38                pwm_init
+ *fill*         0x23e00b04       0x1c 00
+ .text          0x23e00b20      0x33c arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
+                0x23e00b5c                get_pll_clk
+                0x23e00d18                get_arm_clk
+                0x23e00d88                get_pwm_clk
+                0x23e00dac                get_uart_clk
+                0x23e00dd0                set_mmc_clk
+                0x23e00de0                v7_outer_cache_enable
+                0x23e00df4                v7_outer_cache_disable
+                0x23e00e20                reset_cpu
+ .text          0x23e00e5c      0x868 arch/arm/lib/libarm.o
+                0x23e00ed0                coloured_LED_init
+                0x23e00ed0                __coloured_LED_init
+                0x23e00ed4                red_LED_on
+                0x23e00ed4                __red_LED_on
+                0x23e00ed8                __red_LED_off
+                0x23e00ed8                red_LED_off
+                0x23e00edc                green_LED_on
+                0x23e00edc                __green_LED_on
+                0x23e00ee0                __green_LED_off
+                0x23e00ee0                green_LED_off
+                0x23e00ee4                __yellow_LED_on
+                0x23e00ee4                yellow_LED_on
+                0x23e00ee8                __yellow_LED_off
+                0x23e00ee8                yellow_LED_off
+                0x23e00eec                blue_LED_on
+                0x23e00eec                __blue_LED_on
+                0x23e00ef0                blue_LED_off
+                0x23e00ef0                __blue_LED_off
+                0x23e00ef4                __dram_init_banksize
+                0x23e00f10                board_init_f_nand
+                0x23e00f14                board_init_r
+                0x23e0103c                hang
+                0x23e01050                board_init_f
+                0x23e01180                arch_lmb_reserve
+                0x23e011a4                do_bootm_linux
+                0x23e0137c                __flush_cache
+                0x23e01380                __flush_dcache_all
+                0x23e0138c                enable_caches
+                0x23e0138c                __enable_caches
+                0x23e013c8                __arm_init_before_mmu
+                0x23e013cc                icache_enable
+                0x23e013e4                icache_disable
+                0x23e013fc                icache_status
+                0x23e01410                dcache_enable
+                0x23e01414                dcache_disable
+                0x23e01418                dcache_status
+                0x23e01420                interrupt_init
+                0x23e0143c                enable_interrupts
+                0x23e01440                disable_interrupts
+                0x23e01448                bad_mode
+                0x23e01458                show_regs
+                0x23e01598                do_undefined_instruction
+                0x23e015bc                do_software_interrupt
+                0x23e015e0                do_prefetch_abort
+                0x23e01604                do_data_abort
+                0x23e01628                do_not_used
+                0x23e0164c                do_fiq
+                0x23e01670                do_irq
+                0x23e01694                do_reset
+ .text          0x23e016c4    0x1152c common/libcommon.o
+                0x23e016c4                do_bdinfo
+                0x23e01848                do_go_exec
+                0x23e01860                do_go
+                0x23e018ec                do_bootd
+                0x23e01c34                do_iminfo
+                0x23e02174                arch_preboot_os
+                0x23e02174                __arch_preboot_os
+                0x23e02178                do_bootm_subcommand
+                0x23e023c4                do_bootm
+                0x23e0265c                bootm_maybe_autostart
+                0x23e026d0                do_coninfo
+                0x23e02788                do_echo
+                0x23e02898                do_bootelf_exec
+                0x23e028dc                valid_elf_image
+                0x23e02928                do_bootvx
+                0x23e02bc0                do_bootelf
+                0x23e02d14                do_exit
+                0x23e02d44                do_fat_fsinfo
+                0x23e02e1c                do_fat_ls
+                0x23e02f24                do_fat_fsload
+                0x23e030a8                do_flinfo
+                0x23e030b0                do_flerase
+                0x23e030b8                do_protect
+                0x23e03108                do_help
+                0x23e031dc                binary_test
+                0x23e03398                do_itest
+                0x23e03430                buzzer_on
+                0x23e03460                buzzer_off
+                0x23e03478                delay
+                0x23e0349c                hareware_init
+                0x23e034b4                led_test
+                0x23e038ec                do_load_serial
+                0x23e039c8                send_pad
+                0x23e039f4                ktrans
+                0x23e03a14                chk1
+                0x23e03a3c                s1_sendpacket
+                0x23e03a60                send_ack
+                0x23e03ac0                send_nack
+                0x23e03b20                k_data_init
+                0x23e03b40                k_data_save
+                0x23e03b64                k_data_restore
+                0x23e03b88                k_data_char
+                0x23e03bd8                handle_send_packet
+                0x23e03d9c                do_load_serial_bin
+                0x23e041f8                do_mem_crc
+                0x23e042a0                do_mem_base
+                0x23e042e4                do_mem_mtest
+                0x23e04488                do_mem_loop
+                0x23e04580                do_mem_cp
+                0x23e04658                do_mem_cmp
+                0x23e047e8                do_mem_mw
+                0x23e049f0                do_mem_nm
+                0x23e04a14                do_mem_mm
+                0x23e04a38                do_mem_md
+                0x23e04b10                main_menu_usage
+                0x23e04bb4                awaitkey
+                0x23e04bd0                menu_shell
+                0x23e04f80                do_menu
+                0x23e04f90                do_sleep
+                0x23e05010                do_mmcops
+                0x23e05440                do_mmcinfo
+                0x23e06004                mtd_device_validate
+                0x23e06034                device_find
+                0x23e065ec                mtd_id_parse
+                0x23e066fc                find_dev_and_part
+                0x23e068b4                mtdparts_init
+                0x23e06ea8                do_mtdparts
+                0x23e074d4                do_chpart
+                0x23e0782c                do_nandboot
+                0x23e07cdc                do_nand
+                0x23e08720                do_ping
+                0x23e08a5c                do_nfs
+                0x23e08a68                do_dhcp
+                0x23e08a74                do_tftpb
+                0x23e08a80                do_bootp
+                0x23e08d94                do_env_save
+                0x23e08e58                do_env_print
+                0x23e08edc                get_env_id
+                0x23e08eec                _do_env_set
+                0x23e092b4                do_env_set
+                0x23e092d0                setenv
+                0x23e09540                envmatch
+                0x23e095a4                getenv_f
+                0x23e09660                getenv
+                0x23e096cc                do_env_edit
+                0x23e09734                iis_init
+                0x23e097a8                iic_write
+                0x23e09864                iic_init
+                0x23e0989c                wm8960_init
+                0x23e0997c                sound_test
+                0x23e099ac                source
+                0x23e09ad0                do_source
+                0x23e09b14                do_false
+                0x23e09b1c                do_true
+                0x23e09b24                do_test
+                0x23e09f94                putc3
+                0x23e09fb4                uart3_test
+                0x23e0a044                do_usbd_dnw
+                0x23e0a150                do_version
+                0x23e0a188                do_imgextract
+                0x23e0a460                find_cmd_tbl
+                0x23e0a4fc                find_cmd
+                0x23e0a524                cmd_usage
+                0x23e0a580                _do_help
+                0x23e0a708                cmd_get_data_size
+                0x23e0a7fc                serial_printf
+                0x23e0a840                fgetc
+                0x23e0a86c                ftstc
+                0x23e0a898                fputc
+                0x23e0a8c0                fputs
+                0x23e0a8e8                fprintf
+                0x23e0a934                getc
+                0x23e0a94c                tstc
+                0x23e0a964                putc
+                0x23e0a980                puts
+                0x23e0a99c                printf
+                0x23e0a9e0                vprintf
+                0x23e0aa18                ctrlc
+                0x23e0aa64                disable_ctrlc
+                0x23e0aa7c                had_ctrlc
+                0x23e0aa8c                clear_ctrlc
+                0x23e0aaa0                dbg
+                0x23e0aaac                search_device
+                0x23e0aad4                console_assign
+                0x23e0ab14                console_init_f
+                0x23e0ab24                stdio_print_current_devices
+                0x23e0abdc                console_init_r
+                0x23e0acc4                sbrk
+                0x23e0ad20                mem_malloc_init
+                0x23e0ad40                malloc_trim
+                0x23e0ae10                free
+                0x23e0b034                cfree
+                0x23e0b038                malloc
+                0x23e0b5f0                calloc
+                0x23e0b6d0                memalign
+                0x23e0b7e0                pvalloc
+                0x23e0b7f8                valloc
+                0x23e0b804                realloc
+                0x23e0bc54                malloc_usable_size
+                0x23e0bc94                mallopt
+                0x23e0bd08                env_get_addr
+                0x23e0bd2c                env_get_char_memory
+                0x23e0bd3c                env_get_char
+                0x23e0bd70                set_default_env
+                0x23e0be10                env_import
+                0x23e0bee0                env_relocate
+                0x23e0bf10                env_get_char_spec
+                0x23e0bf1c                env_init
+                0x23e0bf38                writeenv
+                0x23e0c008                saveenv
+                0x23e0c174                readenv
+                0x23e0c228                env_relocate_spec
+                0x23e0c270                get_version
+                0x23e0c278                jumptable_init
+                0x23e0c49c                do_showvar
+                0x23e0c99c                simple_itoa
+                0x23e0c9f4                get_local_var
+                0x23e0cbc0                set_local_var
+                0x23e0cd78                unset_local_var
+                0x23e0ce18                new_pipe
+                0x23e0ce88                reserved_word
+                0x23e0d1b0                mapset
+                0x23e0d1d4                update_ifs_map
+                0x23e0d244                parse_string_outer
+                0x23e0e13c                parse_file_outer
+                0x23e0e180                u_boot_hush_start
+                0x23e0e214                image_check_hcrc
+                0x23e0e264                image_check_dcrc
+                0x23e0e2a4                image_multi_count
+                0x23e0e2c4                image_multi_getimg
+                0x23e0e348                getenv_yesno
+                0x23e0e370                getenv_bootm_low
+                0x23e0e3a0                getenv_bootm_size
+                0x23e0e3fc                getenv_bootm_mapsize
+                0x23e0e42c                memmove_wd
+                0x23e0e438                genimg_print_size
+                0x23e0e468                get_table_entry_name
+                0x23e0e494                genimg_get_os_name
+                0x23e0e4ac                genimg_get_arch_name
+                0x23e0e4c4                genimg_get_type_name
+                0x23e0e4dc                genimg_get_comp_name
+                0x23e0e4f4                image_print_contents
+                0x23e0e66c                get_table_entry_id
+                0x23e0e6b8                genimg_get_os_id
+                0x23e0e6d0                genimg_get_arch_id
+                0x23e0e6e8                genimg_get_type_id
+                0x23e0e700                genimg_get_comp_id
+                0x23e0e718                genimg_get_format
+                0x23e0e730                genimg_get_image
+                0x23e0e734                genimg_has_config
+                0x23e0e73c                boot_get_ramdisk
+                0x23e0e96c                boot_ramdisk_high
+                0x23e0ec5c                __show_boot_progress
+                0x23e0ec5c                show_boot_progress
+                0x23e0ec60                readline_into_buffer
+                0x23e0f4b8                readline
+                0x23e0f4d4                parse_line
+                0x23e0f564                run_command
+                0x23e0f8f8                main_loop
+                0x23e0fa28                do_run
+                0x23e0fa9c                get_ram_size
+                0x23e0fc00                srec_decode
+                0x23e0fe78                serial_register
+                0x23e0fe90                serial_stdio_init
+                0x23e0ff20                serial_assign
+                0x23e0ff6c                serial_initialize
+                0x23e0ffbc                serial_reinit_all
+                0x23e0ffe8                serial_init
+                0x23e10028                serial_setbrg
+                0x23e10060                serial_getc
+                0x23e100a0                serial_tstc
+                0x23e100e0                serial_putc
+                0x23e10120                serial_puts
+                0x23e10160                stdio_get_list
+                0x23e1016c                stdio_get_by_name
+                0x23e101c0                stdio_clone
+                0x23e10208                stdio_register
+                0x23e1024c                stdio_init
+                0x23e102dc                s3c_usb_init_phy
+                0x23e1031c                s3c_usb_phy_off
+                0x23e10348                s3c_usb_core_soft_reset
+                0x23e10364                s3c_usb_wait_cable_insert
+                0x23e103b0                s3c_usb_init_core
+                0x23e103cc                s3c_usb_check_current_mode
+                0x23e103e0                s3c_usb_set_soft_disconnect
+                0x23e103f4                s3c_usb_clear_soft_disconnect
+                0x23e10408                s3c_usb_init_device
+                0x23e10430                s3c_usbctl_init
+                0x23e104b4                s3c_usbc_activate
+                0x23e104bc                s3c_usb_stop
+                0x23e104d0                s3c_usb_print_pkt
+                0x23e1051c                s3c_usb_verify_checksum
+                0x23e105c4                s3c_usb_set_inep_xfersize
+                0x23e105f8                s3c_usb_set_outep_xfersize
+                0x23e1062c                s3c_usb_write_ep0_fifo
+                0x23e10678                s3c_usb_write_in_fifo
+                0x23e106c4                s3c_usb_read_out_fifo
+                0x23e1070c                s3c_usb_get_desc
+                0x23e1081c                s3c_usb_clear_feature
+                0x23e1088c                s3c_usb_set_feature
+                0x23e109e4                s3c_usb_get_status
+                0x23e10a5c                s3c_usb_ep0_int_hndlr
+                0x23e10bc8                s3c_usb_set_otherspeed_conf_desc
+                0x23e10cbc                s3c_usb_transfer_ep0
+                0x23e11608                s3c_usb_int_bulkin
+                0x23e116d0                s3c_usb_upload_start
+                0x23e11838                s3c_usb_download_start
+                0x23e1196c                s3c_usb_download_continue
+                0x23e11a18                s3c_usb_int_bulkout
+                0x23e11a40                s3c_usb_dma_in_done
+                0x23e11ae0                s3c_usb_dma_out_done
+                0x23e11b8c                s3c_usb_set_all_outep_nak
+                0x23e11bb4                s3c_usb_clear_all_outep_nak
+                0x23e11bdc                s3c_usb_set_max_pktsize
+                0x23e11c18                s3c_usb_set_endpoint
+                0x23e11c64                s3c_usb_set_descriptors
+                0x23e11db8                s3c_usb_check_speed
+                0x23e11dd0                s3c_usb_clear_dnfile_info
+                0x23e11dec                s3c_usb_clear_upfile_info
+                0x23e11e08                s3c_usb_check_setconf
+                0x23e11e20                s3c_usb_set_opmode
+                0x23e11e8c                s3c_usb_reset
+                0x23e11ee8                s3c_usb_set_init
+                0x23e11f44                s3c_usb_pkt_receive
+                0x23e11fc4                s3c_usb_transfer
+                0x23e120b4                s3c_udc_int_hndlr
+                0x23e12158                lcd_init
+                0x23e12270                lcd_draw_pixel
+                0x23e12284                lcd_clear_screen
+                0x23e122c4                lcd_draw_picture
+                0x23e12320                WB_lcd_init_and_display
+                0x23e12338                CYGACC_COMM_IF_GETC_TIMEOUT
+                0x23e12630                CYGACC_COMM_IF_PUTC
+                0x23e12638                parse_num
+                0x23e12754                xyzModem_stream_open
+                0x23e1289c                xyzModem_stream_read
+                0x23e12aec                xyzModem_stream_close
+                0x23e12b3c                xyzModem_stream_terminate
+                0x23e12bd0                xyzModem_error
+ .text          0x23e12bf0      0x8e4 disk/libdisk.o
+                0x23e12bf0                get_dev
+                0x23e12c50                dev_print
+                0x23e12e68                init_part
+                0x23e12e84                get_partition_info
+                0x23e12eac                print_part
+                0x23e13420                test_part_dos
+                0x23e13488                print_part_dos
+                0x23e134b4                get_partition_info_dos
+ .text          0x23e134d4      0x254 drivers/gpio/libgpio.o
+                0x23e134d4                s5p_gpio_cfg_pin
+                0x23e134f0                s5p_gpio_direction_output
+                0x23e13528                s5p_gpio_direction_input
+                0x23e13530                s5p_gpio_set_value
+                0x23e13550                s5p_gpio_get_value
+                0x23e13568                s5p_gpio_set_pull
+                0x23e1358c                s5p_gpio_set_drv
+                0x23e135b0                s5p_gpio_set_rate
+                0x23e135d8                s5p_gpio_get_bank
+                0x23e135f8                s5p_gpio_get_pin
+                0x23e13610                gpio_request
+                0x23e13618                gpio_direction_input
+                0x23e1365c                gpio_direction_output
+                0x23e136a4                gpio_get_value
+                0x23e136ec                gpio_set_value
+ .text          0x23e13728     0x1cb0 drivers/mmc/libmmc.o
+                0x23e13744                __board_mmc_getcd
+                0x23e13744                board_mmc_getcd
+                0x23e1374c                mmc_send_cmd
+                0x23e1375c                mmc_send_status
+                0x23e13824                mmc_set_blocklen
+                0x23e1385c                find_mmc_device
+                0x23e13bcc                mmc_read_blocks
+                0x23e13d50                mmc_go_idle
+                0x23e13da4                sd_send_op_cond
+                0x23e13f08                mmc_send_op_cond
+                0x23e14074                mmc_send_ext_csd
+                0x23e140c8                mmc_switch
+                0x23e14120                mmc_change_freq
+                0x23e141d4                mmc_switch_part
+                0x23e14210                sd_switch
+                0x23e14280                sd_change_freq
+                0x23e14460                mmc_set_ios
+                0x23e14470                mmc_set_clock
+                0x23e1449c                mmc_set_bus_width
+                0x23e144b0                mmc_startup
+                0x23e14aec                mmc_send_if_cond
+                0x23e14b6c                mmc_register
+                0x23e14bf0                mmc_get_dev
+                0x23e14c04                mmc_init
+                0x23e14cbc                cpu_mmc_init
+                0x23e14cc4                print_mmc_devices
+                0x23e14d28                get_mmc_num
+                0x23e14d38                mmc_initialize
+                0x23e152ac                s5p_mmc_init
+ .text          0x23e153d8      0x1dc drivers/mtd/libmtd.o
+                0x23e153d8                add_mtd_device
+                0x23e15448                del_mtd_device
+                0x23e15498                get_mtd_device
+                0x23e15514                get_mtd_device_nm
+                0x23e15588                put_mtd_device
+ .text          0x23e155b4     0x6dbc drivers/mtd/nand/libnand.o
+                0x23e155b4                nand_init
+                0x23e17658                nand_wait_ready
+                0x23e18248                nand_erase_nand
+                0x23e18644                nand_scan_ident
+                0x23e18c38                nand_scan_tail
+                0x23e191c4                nand_scan
+                0x23e191e8                nand_release
+                0x23e1a1a0                nand_update_bbt
+                0x23e1a45c                nand_scan_bbt
+                0x23e1a90c                nand_default_bbt
+                0x23e1a9cc                nand_isbad_bbt
+                0x23e1aa20                nand_calculate_ecc
+                0x23e1ab10                nand_correct_data
+                0x23e1acc8                nand_erase_opts
+                0x23e1b03c                nand_write_skip_bad
+                0x23e1b2c8                nand_read_skip_bad
+                0x23e1b630                s3c_nand_enable_hwecc_8bit
+                0x23e1b78c                s3c_nand_read_oob_8bit
+                0x23e1b7d4                s3c_nand_write_oob_8bit
+                0x23e1bc50                s3c_nand_correct_data_8bit
+                0x23e1bd88                s3c_nand_calculate_ecc_8bit
+                0x23e1bea4                s3c_nand_read_page_8bit
+                0x23e1bf98                s3c_nand_write_page_8bit
+                0x23e1c064                board_nand_init
+ .text          0x23e1c370      0x9d8 drivers/net/libnet.o
+                0x23e1ccc4                dm9000_initialize
+ .text          0x23e1cd48        0x0 drivers/pcmcia/libpcmcia.o
+ .text          0x23e1cd48        0x0 drivers/rtc/librtc.o
+ .text          0x23e1cd48      0x268 drivers/serial/libserial.o
+                0x23e1cd84                serial_setbrg_dev
+                0x23e1cdcc                s5p_serial3_setbrg
+                0x23e1cdd4                s5p_serial2_setbrg
+                0x23e1cddc                s5p_serial1_setbrg
+                0x23e1cde4                s5p_serial0_setbrg
+                0x23e1cdec                serial_init_dev
+                0x23e1ce2c                s5p_serial3_init
+                0x23e1ce34                s5p_serial2_init
+                0x23e1ce3c                s5p_serial1_init
+                0x23e1ce44                s5p_serial0_init
+                0x23e1ce4c                serial_getc_dev
+                0x23e1ce90                s5p_serial3_getc
+                0x23e1ce98                s5p_serial2_getc
+                0x23e1cea0                s5p_serial1_getc
+                0x23e1cea8                s5p_serial0_getc
+                0x23e1ceb0                serial_putc_dev
+                0x23e1cf00                s5p_serial3_putc
+                0x23e1cf08                s5p_serial2_putc
+                0x23e1cf10                s5p_serial1_putc
+                0x23e1cf18                s5p_serial0_putc
+                0x23e1cf20                serial_tstc_dev
+                0x23e1cf3c                s5p_serial3_tstc
+                0x23e1cf44                s5p_serial2_tstc
+                0x23e1cf4c                s5p_serial1_tstc
+                0x23e1cf54                s5p_serial0_tstc
+                0x23e1cf5c                serial_puts_dev
+                0x23e1cf84                s5p_serial3_puts
+                0x23e1cf8c                s5p_serial2_puts
+                0x23e1cf94                s5p_serial1_puts
+                0x23e1cf9c                s5p_serial0_puts
+                0x23e1cfa4                default_serial_console
+ .text          0x23e1cfb0     0x17b8 fs/fat/libfat.o
+                0x23e1d6cc                fat_register_device
+                0x23e1d7e0                do_fat_read
+                0x23e1e254                file_fat_detectfs
+                0x23e1e3b4                file_fat_ls
+                0x23e1e3c4                file_fat_read
+                0x23e1e3fc                file_getfsname
+                0x23e1e414                file_cd
+                0x23e1e608                file_detectfs
+                0x23e1e648                file_ls
+                0x23e1e6d0                file_read
+ .text          0x23e1e768     0x2cd0 lib/libgeneric.o
+                0x23e1e768                crc7
+                0x23e1e790                cyg_crc16
+                0x23e1e7d8                crc32_no_comp
+                0x23e1e8c0                crc32
+                0x23e1e8d4                crc32_wd
+                0x23e1e8d8                display_options
+                0x23e1e8f8                print_size
+                0x23e1ea28                print_buffer
+                0x23e1eb94                zfree
+                0x23e1eb9c                zalloc
+                0x23e1ebac                zunzip
+                0x23e1ecb4                gunzip
+                0x23e1ed74                hcreate_r
+                0x23e1ee20                hdestroy_r
+                0x23e1ee94                hstrstr_r
+                0x23e1ef40                hmatch_r
+                0x23e1efe0                hsearch_r
+                0x23e1f2c4                hdelete_r
+                0x23e1f34c                hexport_r
+                0x23e1f564                himport_r
+                0x23e1f960                lmb_dump_all
+                0x23e1f964                lmb_init
+                0x23e1f98c                lmb_add
+                0x23e1f990                lmb_free
+                0x23e1fab8                lmb_reserve
+                0x23e1fac0                lmb_overlaps_region
+                0x23e1fb14                __lmb_alloc_base
+                0x23e1fc44                lmb_alloc_base
+                0x23e1fc78                lmb_alloc
+                0x23e1fc80                lmb_is_reserved
+                0x23e1fce0                board_lmb_reserve
+                0x23e1fce0                __board_lmb_reserve
+                0x23e1fce4                __arch_lmb_reserve
+                0x23e1fce8                ldiv
+                0x23e1fd38                string_to_ip
+                0x23e1fdb4                qsort
+                0x23e1fea0                strcmp_compar
+                0x23e1feac                strmhz
+                0x23e1ff18                __div64_32
+                0x23e2000c                strcpy
+                0x23e20028                strncpy
+                0x23e20050                strcat
+                0x23e20080                strncat
+                0x23e200d0                strcmp
+                0x23e20100                strncmp
+                0x23e20148                strchr
+                0x23e2017c                strlen
+                0x23e20198                strrchr
+                0x23e201d4                strnlen
+                0x23e201fc                strdup
+                0x23e20230                strspn
+                0x23e20270                strpbrk
+                0x23e202ac                strtok
+                0x23e20328                strsep
+                0x23e2035c                strswab
+                0x23e203a8                memset
+                0x23e20410                bcopy
+                0x23e20438                memcpy
+                0x23e204ac                memmove
+                0x23e20504                memcmp
+                0x23e2053c                memscan
+                0x23e20564                strstr
+                0x23e205c4                memchr
+                0x23e205f8                udelay
+                0x23e20b0c                simple_strtoul
+                0x23e20bb8                strict_strtoul
+                0x23e20c30                simple_strtol
+                0x23e20c58                ustrtoul
+                0x23e20ccc                simple_strtoull
+                0x23e20dac                vsprintf
+                0x23e213d0                sprintf
+                0x23e213f4                panic
+ .text          0x23e21438     0x267c lib/zlib/libz.o
+                0x23e21438                zcfree
+                0x23e21440                zcalloc
+                0x23e21448                inflate_fast
+                0x23e2199c                inflate_table
+                0x23e21f10                inflateReset
+                0x23e21f90                inflateInit2_
+                0x23e22098                inflateInit_
+                0x23e220ac                inflateEnd
+                0x23e22118                adler32
+                0x23e22414                inflate
+ .text          0x23e23ab4     0x39e8 net/libnet.o
+                0x23e241ec                BootpRequest
+                0x23e243e4                DhcpRequest
+                0x23e24430                cpu_eth_init
+                0x23e24494                eth_parse_enetaddr
+                0x23e244f0                eth_getenv_enetaddr
+                0x23e24510                eth_setenv_enetaddr
+                0x23e24548                eth_getenv_enetaddr_by_index
+                0x23e2459c                eth_get_dev
+                0x23e245ac                eth_get_dev_by_name
+                0x23e24600                eth_get_dev_by_index
+                0x23e2464c                eth_get_dev_index
+                0x23e2469c                eth_write_hwaddr
+                0x23e247c8                eth_register
+                0x23e24850                eth_initialize
+                0x23e249e4                eth_halt
+                0x23e24a14                eth_send
+                0x23e24a4c                eth_rx
+                0x23e24a78                eth_try_another
+                0x23e24af4                eth_init
+                0x23e24bc4                eth_set_current
+                0x23e24c58                eth_get_name
+                0x23e24cfc                NetSetHandler
+                0x23e24d0c                NetSetTimeout
+                0x23e24d3c                NetStartAgain
+                0x23e24e48                NetSendPacket
+                0x23e24e4c                NetCksum
+                0x23e24e84                NetCksumOk
+                0x23e24ea8                NetEthHdrSize
+                0x23e24ee8                NetSetEther
+                0x23e24f8c                NetReceive
+                0x23e25498                ArpRequest
+                0x23e25598                ArpTimeoutCheck
+                0x23e2560c                PingSend
+                0x23e25754                NetSetIP
+                0x23e2584c                NetSendUDPPacket
+                0x23e2598c                copy_filename
+                0x23e259d0                random_port
+                0x23e259ec                ip_to_string
+                0x23e25a3c                VLAN_to_string
+                0x23e25a8c                string_to_VLAN
+                0x23e25ae4                getenv_VLAN
+                0x23e25af4                NetLoop
+                0x23e26a6c                NfsStart
+                0x23e271bc                TftpStart
+ .text          0x23e2749c      0x260 board/samsung/webee210/libwebee210.o(webee210.o)
+                0x23e2749c                board_init
+                0x23e27548                dram_init
+                0x23e27568                dram_init_banksize
+                0x23e2758c                board_late_init
+                0x23e27594                board_eth_init
+                0x23e27598                checkboard
+                0x23e275b0                board_mmc_init
+ .text          0x23e276fc      0x42c board/samsung/webee210/libwebee210.o(lowlevel_init.o)
+                0x23e27700                lowlevel_init
+ *fill*         0x23e27b28       0x18 00
+ .text          0x23e27b40      0x560 board/samsung/webee210/libwebee210.o(mem_setup.o)
+                0x23e27b40                mem_ctrl_asm_init
+                0x23e27eb8                cleanDCache
+                0x23e27ec4                cleanFlushDCache
+                0x23e27ed0                cleanFlushCache
+                0x23e27f60                v7_flush_dcache_all
+                0x23e28000                disable_l2cache
+                0x23e28020                enable_l2cache
+                0x23e28040                set_l2cache_auxctrl
+                0x23e28060                set_l2cache_auxctrl_cycle
+ .text          0x23e280a0        0xc /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
+                0x23e280a0                raise
+                0x23e280a8                __aeabi_unwind_cpp_pr0
+ .text          0x23e280ac      0x20c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
+                0x23e280ac                __udivsi3
+                0x23e280ac                __aeabi_uidiv
+                0x23e28298                __aeabi_uidivmod
+ .text          0x23e282b8      0x240 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
+                0x23e282b8                __aeabi_idiv
+                0x23e282b8                __divsi3
+                0x23e284d8                __aeabi_idivmod
+ .text          0x23e284f8       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
+                0x23e284f8                __aeabi_llsr
+                0x23e284f8                __lshrdi3
+ .text          0x23e28514       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
+                0x23e28514                __ashrdi3
+                0x23e28514                __aeabi_lasr
+ .text          0x23e28530       0x1c /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
+                0x23e28530                __ashldi3
+                0x23e28530                __aeabi_llsl
+ .text          0x23e2854c       0x10 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
+                0x23e2854c                __aeabi_ldiv0
+                0x23e2854c                __aeabi_idiv0
 
-.glue_7         0x33e2855c        0x0
+.glue_7         0x23e2855c        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x33e2855c        0x0
+.glue_7t        0x23e2855c        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x33e2855c        0x0
+.vfp11_veneer   0x23e2855c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x33e2855c        0x0
+.v4_bx          0x23e2855c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
-                0x33e2855c                . = ALIGN (0x4)
+                0x23e2855c                . = ALIGN (0x4)
 
-.rodata         0x33e2855c     0x9d8b
+.rodata         0x23e2855c     0x9d8b
  *(SORT(.rodata*))
- .rodata        0x33e2855c       0x80 arch/arm/lib/libarm.o
- .rodata        0x33e285dc      0x684 common/libcommon.o
-                0x33e286b0                version_string
-                0x33e28758                default_environment
-                0x33e28b94                config_full
-                0x33e28ba0                config_full_total
-                0x33e28bc0                config_high
-                0x33e28bcc                config_high_total
-                0x33e28bec                qualifier_desc
-                0x33e28bf8                string_desc0
-                0x33e28bfc                string_desc1
-                0x33e28c14                string_desc2
- .rodata        0x33e28c60       0x10 disk/libdisk.o
- .rodata        0x33e28c70       0x80 drivers/mmc/libmmc.o
- .rodata        0x33e28cf0      0x61c drivers/mtd/nand/libnand.o
-                0x33e28e54                nand_flash_ids
-                0x33e292bc                nand_manuf_ids
- .rodata        0x33e2930c       0x40 drivers/serial/libserial.o
- .rodata        0x33e2934c       0x18 fs/fat/libfat.o
- .rodata        0x33e29364      0x82c lib/libgeneric.o
-                0x33e29364                crc7_syndrome_table
-                0x33e29a6c                _ctype
-                0x33e29b6c                hex_asc
- .rodata        0x33e29b90      0x9d0 lib/zlib/libz.o
-                0x33e2a538                z_errmsg
- .rodata        0x33e2a560        0xe net/libnet.o
+ .rodata        0x23e2855c       0x80 arch/arm/lib/libarm.o
+ .rodata        0x23e285dc      0x684 common/libcommon.o
+                0x23e286b0                version_string
+                0x23e28758                default_environment
+                0x23e28b94                config_full
+                0x23e28ba0                config_full_total
+                0x23e28bc0                config_high
+                0x23e28bcc                config_high_total
+                0x23e28bec                qualifier_desc
+                0x23e28bf8                string_desc0
+                0x23e28bfc                string_desc1
+                0x23e28c14                string_desc2
+ .rodata        0x23e28c60       0x10 disk/libdisk.o
+ .rodata        0x23e28c70       0x80 drivers/mmc/libmmc.o
+ .rodata        0x23e28cf0      0x61c drivers/mtd/nand/libnand.o
+                0x23e28e54                nand_flash_ids
+                0x23e292bc                nand_manuf_ids
+ .rodata        0x23e2930c       0x40 drivers/serial/libserial.o
+ .rodata        0x23e2934c       0x18 fs/fat/libfat.o
+ .rodata        0x23e29364      0x82c lib/libgeneric.o
+                0x23e29364                crc7_syndrome_table
+                0x23e29a6c                _ctype
+                0x23e29b6c                hex_asc
+ .rodata        0x23e29b90      0x9d0 lib/zlib/libz.o
+                0x23e2a538                z_errmsg
+ .rodata        0x23e2a560        0xe net/libnet.o
  .rodata.str1.1
-                0x33e2a56e       0xd5 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
+                0x23e2a56e       0xd5 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
                                  0xd7 (size before relaxing)
  .rodata.str1.1
-                0x33e2a643       0x16 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
+                0x23e2a643       0x16 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
  .rodata.str1.1
-                0x33e2a659      0x39e arch/arm/lib/libarm.o
+                0x23e2a659      0x39e arch/arm/lib/libarm.o
                                 0x3bb (size before relaxing)
  .rodata.str1.1
-                0x33e2a9f7     0x590b common/libcommon.o
+                0x23e2a9f7     0x590b common/libcommon.o
                                0x5e59 (size before relaxing)
  .rodata.str1.1
-                0x33e30302      0x2ba disk/libdisk.o
+                0x23e30302      0x2ba disk/libdisk.o
                                 0x2db (size before relaxing)
  .rodata.str1.1
-                0x33e305bc      0x1dc drivers/mmc/libmmc.o
+                0x23e305bc      0x1dc drivers/mmc/libmmc.o
                                 0x1e8 (size before relaxing)
  .rodata.str1.1
-                0x33e30798       0x50 drivers/mtd/libmtd.o
+                0x23e30798       0x50 drivers/mtd/libmtd.o
  .rodata.str1.1
-                0x33e307e8      0xc8a drivers/mtd/nand/libnand.o
+                0x23e307e8      0xc8a drivers/mtd/nand/libnand.o
                                 0xca2 (size before relaxing)
  .rodata.str1.1
-                0x33e31472      0x20d drivers/net/libnet.o
+                0x23e31472      0x20d drivers/net/libnet.o
                                 0x21b (size before relaxing)
  .rodata.str1.1
-                0x33e3167f      0x195 fs/fat/libfat.o
+                0x23e3167f      0x195 fs/fat/libfat.o
                                 0x1ca (size before relaxing)
  .rodata.str1.1
-                0x33e31814      0x12b lib/libgeneric.o
+                0x23e31814      0x12b lib/libgeneric.o
                                 0x13d (size before relaxing)
  .rodata.str1.1
-                0x33e3193f      0x21c lib/zlib/libz.o
+                0x23e3193f      0x21c lib/zlib/libz.o
                                 0x21d (size before relaxing)
  .rodata.str1.1
-                0x33e31b5b      0x75a net/libnet.o
+                0x23e31b5b      0x75a net/libnet.o
                                 0x8f3 (size before relaxing)
  .rodata.str1.1
-                0x33e322b5       0x32 board/samsung/webee210/libwebee210.o(webee210.o)
+                0x23e322b5       0x32 board/samsung/webee210/libwebee210.o(webee210.o)
 
-.hash           0x33e322e8       0x44
- .hash          0x33e322e8       0x44 arch/arm/cpu/armv7/start.o
-                0x33e3232c                . = ALIGN (0x4)
+.hash           0x23e322e8       0x44
+ .hash          0x23e322e8       0x44 arch/arm/cpu/armv7/start.o
+                0x23e3232c                . = ALIGN (0x4)
 
-.data           0x33e3232c     0x1cf4
+.data           0x23e3232c     0x1cf4
  *(.data)
- .data          0x33e3232c        0x0 arch/arm/cpu/armv7/start.o
- .data          0x33e3232c        0x0 arch/arm/cpu/armv7/libarmv7.o
- .data          0x33e3232c        0x8 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
-                0x33e3232c                s5p_cpu_id
-                0x33e32330                s5p_cpu_rev
- .data          0x33e32334        0x0 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
- .data          0x33e32334       0x2c arch/arm/lib/libarm.o
-                0x33e32334                init_sequence
- .data          0x33e32360      0x678 common/libcommon.o
-                0x33e324f0                load_addr
-                0x33e32908                env_name_spec
-                0x33e32994                stdio_names
-                0x33e329a0                test_pkt
- .data          0x33e329d8        0x0 disk/libdisk.o
- .data          0x33e329d8        0x0 drivers/gpio/libgpio.o
- .data          0x33e329d8        0x4 drivers/mmc/libmmc.o
- .data          0x33e329dc        0x0 drivers/mtd/libmtd.o
- .data          0x33e329dc     0x1354 drivers/mtd/nand/libnand.o
-                0x33e329dc                nand_curr_device
- .data          0x33e33d30        0x0 drivers/net/libnet.o
- .data          0x33e33d30        0x0 drivers/pcmcia/libpcmcia.o
- .data          0x33e33d30        0x0 drivers/rtc/librtc.o
- .data          0x33e33d30       0xc0 drivers/serial/libserial.o
-                0x33e33d30                s5p_serial0_device
-                0x33e33d60                s5p_serial1_device
-                0x33e33d90                s5p_serial2_device
-                0x33e33dc0                s5p_serial3_device
- .data          0x33e33df0      0x208 fs/fat/libfat.o
-                0x33e33df4                file_cwd
- .data          0x33e33ff8        0x0 lib/libgeneric.o
- .data          0x33e33ff8        0x0 lib/zlib/libz.o
- .data          0x33e33ff8       0x28 net/libnet.o
-                0x33e33ff8                NetOurVLAN
-                0x33e33ffa                NetOurNativeVLAN
-                0x33e33ffc                NetBcastAddr
-                0x33e34018                TftpRRQTimeoutCountMax
-                0x33e3401c                TftpRRQTimeoutMSecs
- .data          0x33e34020        0x0 board/samsung/webee210/libwebee210.o(webee210.o)
- .data          0x33e34020        0x0 board/samsung/webee210/libwebee210.o(lowlevel_init.o)
- .data          0x33e34020        0x0 board/samsung/webee210/libwebee210.o(mem_setup.o)
- .data          0x33e34020        0x0 /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
- .data          0x33e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
+ .data          0x23e3232c        0x0 arch/arm/cpu/armv7/start.o
+ .data          0x23e3232c        0x0 arch/arm/cpu/armv7/libarmv7.o
+ .data          0x23e3232c        0x8 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
+                0x23e3232c                s5p_cpu_id
+                0x23e32330                s5p_cpu_rev
+ .data          0x23e32334        0x0 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
+ .data          0x23e32334       0x2c arch/arm/lib/libarm.o
+                0x23e32334                init_sequence
+ .data          0x23e32360      0x678 common/libcommon.o
+                0x23e324f0                load_addr
+                0x23e32908                env_name_spec
+                0x23e32994                stdio_names
+                0x23e329a0                test_pkt
+ .data          0x23e329d8        0x0 disk/libdisk.o
+ .data          0x23e329d8        0x0 drivers/gpio/libgpio.o
+ .data          0x23e329d8        0x4 drivers/mmc/libmmc.o
+ .data          0x23e329dc        0x0 drivers/mtd/libmtd.o
+ .data          0x23e329dc     0x1354 drivers/mtd/nand/libnand.o
+                0x23e329dc                nand_curr_device
+ .data          0x23e33d30        0x0 drivers/net/libnet.o
+ .data          0x23e33d30        0x0 drivers/pcmcia/libpcmcia.o
+ .data          0x23e33d30        0x0 drivers/rtc/librtc.o
+ .data          0x23e33d30       0xc0 drivers/serial/libserial.o
+                0x23e33d30                s5p_serial0_device
+                0x23e33d60                s5p_serial1_device
+                0x23e33d90                s5p_serial2_device
+                0x23e33dc0                s5p_serial3_device
+ .data          0x23e33df0      0x208 fs/fat/libfat.o
+                0x23e33df4                file_cwd
+ .data          0x23e33ff8        0x0 lib/libgeneric.o
+ .data          0x23e33ff8        0x0 lib/zlib/libz.o
+ .data          0x23e33ff8       0x28 net/libnet.o
+                0x23e33ff8                NetOurVLAN
+                0x23e33ffa                NetOurNativeVLAN
+                0x23e33ffc                NetBcastAddr
+                0x23e34018                TftpRRQTimeoutCountMax
+                0x23e3401c                TftpRRQTimeoutMSecs
+ .data          0x23e34020        0x0 board/samsung/webee210/libwebee210.o(webee210.o)
+ .data          0x23e34020        0x0 board/samsung/webee210/libwebee210.o(lowlevel_init.o)
+ .data          0x23e34020        0x0 board/samsung/webee210/libwebee210.o(mem_setup.o)
+ .data          0x23e34020        0x0 /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
+ .data          0x23e34020        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
 
-.got            0x33e34020        0x0
+.got            0x23e34020        0x0
  .got           0x00000000        0x0 arch/arm/cpu/armv7/start.o
 
-.got.plt        0x33e34020        0xc
- .got.plt       0x33e34020        0xc arch/arm/cpu/armv7/start.o
-                0x33e34020                _GLOBAL_OFFSET_TABLE_
-                0x33e3402c                . = ALIGN (0x4)
-                0x33e3402c                . = .
-                0x33e3402c                __u_boot_cmd_start = .
+.got.plt        0x23e34020        0xc
+ .got.plt       0x23e34020        0xc arch/arm/cpu/armv7/start.o
+                0x23e34020                _GLOBAL_OFFSET_TABLE_
+                0x23e3402c                . = ALIGN (0x4)
+                0x23e3402c                . = .
+                0x23e3402c                __u_boot_cmd_start = .
 
-.u_boot_cmd     0x33e3402c      0x618
+.u_boot_cmd     0x23e3402c      0x618
  *(.u_boot_cmd)
- .u_boot_cmd    0x33e3402c      0x618 common/libcommon.o
-                0x33e3402c                __u_boot_cmd_bdinfo
-                0x33e34044                __u_boot_cmd_go
-                0x33e3405c                __u_boot_cmd_reset
-                0x33e34074                __u_boot_cmd_bootm
-                0x33e3408c                __u_boot_cmd_boot
-                0x33e340a4                __u_boot_cmd_bootd
-                0x33e340bc                __u_boot_cmd_iminfo
-                0x33e340d4                __u_boot_cmd_coninfo
-                0x33e340ec                __u_boot_cmd_echo
-                0x33e34104                __u_boot_cmd_bootelf
-                0x33e3411c                __u_boot_cmd_bootvx
-                0x33e34134                __u_boot_cmd_exit
-                0x33e3414c                __u_boot_cmd_fatload
-                0x33e34164                __u_boot_cmd_fatls
-                0x33e3417c                __u_boot_cmd_fatinfo
-                0x33e34194                __u_boot_cmd_flinfo
-                0x33e341ac                __u_boot_cmd_erase
-                0x33e341c4                __u_boot_cmd_protect
-                0x33e341dc                __u_boot_cmd_help
-                0x33e341f4                __u_boot_cmd_question_mark
-                0x33e3420c                __u_boot_cmd_itest
-                0x33e34224                __u_boot_cmd_led
-                0x33e3423c                __u_boot_cmd_loads
-                0x33e34254                __u_boot_cmd_loadb
-                0x33e3426c                __u_boot_cmd_loady
-                0x33e34284                __u_boot_cmd_md
-                0x33e3429c                __u_boot_cmd_mm
-                0x33e342b4                __u_boot_cmd_nm
-                0x33e342cc                __u_boot_cmd_mw
-                0x33e342e4                __u_boot_cmd_cp
-                0x33e342fc                __u_boot_cmd_cmp
-                0x33e34314                __u_boot_cmd_crc32
-                0x33e3432c                __u_boot_cmd_base
-                0x33e34344                __u_boot_cmd_loop
-                0x33e3435c                __u_boot_cmd_mtest
-                0x33e34374                __u_boot_cmd_menu
-                0x33e3438c                __u_boot_cmd_sleep
-                0x33e343a4                __u_boot_cmd_mmcinfo
-                0x33e343bc                __u_boot_cmd_mmc
-                0x33e343d4                __u_boot_cmd_chpart
-                0x33e343ec                __u_boot_cmd_mtdparts
-                0x33e34404                __u_boot_cmd_nand
-                0x33e3441c                __u_boot_cmd_nboot
-                0x33e34434                __u_boot_cmd_bootp
-                0x33e3444c                __u_boot_cmd_tftpboot
-                0x33e34464                __u_boot_cmd_dhcp
-                0x33e3447c                __u_boot_cmd_nfs
-                0x33e34494                __u_boot_cmd_ping
-                0x33e344ac                __u_boot_cmd_saveenv
-                0x33e344c4                __u_boot_cmd_env
-                0x33e344dc                __u_boot_cmd_editenv
-                0x33e344f4                __u_boot_cmd_printenv
-                0x33e3450c                __u_boot_cmd_setenv
-                0x33e34524                __u_boot_cmd_run
-                0x33e3453c                __u_boot_cmd_sound
-                0x33e34554                __u_boot_cmd_source
-                0x33e3456c                __u_boot_cmd_test
-                0x33e34584                __u_boot_cmd_false
-                0x33e3459c                __u_boot_cmd_true
-                0x33e345b4                __u_boot_cmd_uart3
-                0x33e345cc                __u_boot_cmd_dnw
-                0x33e345e4                __u_boot_cmd_version
-                0x33e345fc                __u_boot_cmd_lcd
-                0x33e34614                __u_boot_cmd_imxtract
-                0x33e3462c                __u_boot_cmd_showvar
-                0x33e34644                __u_boot_cmd_end = .
-                0x33e34644                . = ALIGN (0x4)
-                0x33e34644                __image_copy_end = .
+ .u_boot_cmd    0x23e3402c      0x618 common/libcommon.o
+                0x23e3402c                __u_boot_cmd_bdinfo
+                0x23e34044                __u_boot_cmd_go
+                0x23e3405c                __u_boot_cmd_reset
+                0x23e34074                __u_boot_cmd_bootm
+                0x23e3408c                __u_boot_cmd_boot
+                0x23e340a4                __u_boot_cmd_bootd
+                0x23e340bc                __u_boot_cmd_iminfo
+                0x23e340d4                __u_boot_cmd_coninfo
+                0x23e340ec                __u_boot_cmd_echo
+                0x23e34104                __u_boot_cmd_bootelf
+                0x23e3411c                __u_boot_cmd_bootvx
+                0x23e34134                __u_boot_cmd_exit
+                0x23e3414c                __u_boot_cmd_fatload
+                0x23e34164                __u_boot_cmd_fatls
+                0x23e3417c                __u_boot_cmd_fatinfo
+                0x23e34194                __u_boot_cmd_flinfo
+                0x23e341ac                __u_boot_cmd_erase
+                0x23e341c4                __u_boot_cmd_protect
+                0x23e341dc                __u_boot_cmd_help
+                0x23e341f4                __u_boot_cmd_question_mark
+                0x23e3420c                __u_boot_cmd_itest
+                0x23e34224                __u_boot_cmd_led
+                0x23e3423c                __u_boot_cmd_loads
+                0x23e34254                __u_boot_cmd_loadb
+                0x23e3426c                __u_boot_cmd_loady
+                0x23e34284                __u_boot_cmd_md
+                0x23e3429c                __u_boot_cmd_mm
+                0x23e342b4                __u_boot_cmd_nm
+                0x23e342cc                __u_boot_cmd_mw
+                0x23e342e4                __u_boot_cmd_cp
+                0x23e342fc                __u_boot_cmd_cmp
+                0x23e34314                __u_boot_cmd_crc32
+                0x23e3432c                __u_boot_cmd_base
+                0x23e34344                __u_boot_cmd_loop
+                0x23e3435c                __u_boot_cmd_mtest
+                0x23e34374                __u_boot_cmd_menu
+                0x23e3438c                __u_boot_cmd_sleep
+                0x23e343a4                __u_boot_cmd_mmcinfo
+                0x23e343bc                __u_boot_cmd_mmc
+                0x23e343d4                __u_boot_cmd_chpart
+                0x23e343ec                __u_boot_cmd_mtdparts
+                0x23e34404                __u_boot_cmd_nand
+                0x23e3441c                __u_boot_cmd_nboot
+                0x23e34434                __u_boot_cmd_bootp
+                0x23e3444c                __u_boot_cmd_tftpboot
+                0x23e34464                __u_boot_cmd_dhcp
+                0x23e3447c                __u_boot_cmd_nfs
+                0x23e34494                __u_boot_cmd_ping
+                0x23e344ac                __u_boot_cmd_saveenv
+                0x23e344c4                __u_boot_cmd_env
+                0x23e344dc                __u_boot_cmd_editenv
+                0x23e344f4                __u_boot_cmd_printenv
+                0x23e3450c                __u_boot_cmd_setenv
+                0x23e34524                __u_boot_cmd_run
+                0x23e3453c                __u_boot_cmd_sound
+                0x23e34554                __u_boot_cmd_source
+                0x23e3456c                __u_boot_cmd_test
+                0x23e34584                __u_boot_cmd_false
+                0x23e3459c                __u_boot_cmd_true
+                0x23e345b4                __u_boot_cmd_uart3
+                0x23e345cc                __u_boot_cmd_dnw
+                0x23e345e4                __u_boot_cmd_version
+                0x23e345fc                __u_boot_cmd_lcd
+                0x23e34614                __u_boot_cmd_imxtract
+                0x23e3462c                __u_boot_cmd_showvar
+                0x23e34644                __u_boot_cmd_end = .
+                0x23e34644                . = ALIGN (0x4)
+                0x23e34644                __image_copy_end = .
 
-.rel.dyn        0x33e34644     0x5968
-                0x33e34644                __rel_dyn_start = .
+.rel.dyn        0x23e34644     0x5968
+                0x23e34644                __rel_dyn_start = .
  *(.rel*)
  .rel.got       0x00000000        0x0 arch/arm/cpu/armv7/start.o
  .rel.plt       0x00000000        0x0 arch/arm/cpu/armv7/start.o
- .rel.text      0x33e34644     0x3eb0 arch/arm/cpu/armv7/start.o
- .rel.rodata    0x33e384f4      0x720 arch/arm/cpu/armv7/start.o
- .rel.data      0x33e38c14      0xb88 arch/arm/cpu/armv7/start.o
+ .rel.text      0x23e34644     0x3eb0 arch/arm/cpu/armv7/start.o
+ .rel.rodata    0x23e384f4      0x720 arch/arm/cpu/armv7/start.o
+ .rel.data      0x23e38c14      0xb88 arch/arm/cpu/armv7/start.o
  .rel.u_boot_cmd
-                0x33e3979c      0x810 arch/arm/cpu/armv7/start.o
-                0x33e39fac                __rel_dyn_end = .
+                0x23e3979c      0x810 arch/arm/cpu/armv7/start.o
+                0x23e39fac                __rel_dyn_end = .
 
-.dynsym         0x33e39fac       0xc0
-                0x33e39fac                __dynsym_start = .
+.dynsym         0x23e39fac       0xc0
+                0x23e39fac                __dynsym_start = .
  *(.dynsym)
- .dynsym        0x33e39fac       0xc0 arch/arm/cpu/armv7/start.o
-                0x33e3a06c                _end = .
+ .dynsym        0x23e39fac       0xc0 arch/arm/cpu/armv7/start.o
+                0x23e3a06c                _end = .
 
-.bss            0x33e34644    0x35960
-                0x33e34644                __bss_start = .
+.bss            0x23e34644    0x35960
+                0x23e34644                __bss_start = .
  *(.bss)
- .bss           0x33e34644        0x0 arch/arm/cpu/armv7/start.o
- .bss           0x33e34644        0x0 arch/arm/cpu/armv7/libarmv7.o
- .bss           0x33e34644        0x0 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
- .bss           0x33e34644        0x0 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
- .bss           0x33e34644        0x8 arch/arm/lib/libarm.o
-                0x33e34644                monitor_flash_len
- *fill*         0x33e3464c        0x4 00
- .bss           0x33e34650     0x21c4 common/libcommon.o
-                0x33e34788                his_pad_count
-                0x33e3478c                his_pad_char
-                0x33e347a8                his_eol
-                0x33e347b0                os_data_init
-                0x33e347c0                os_data_char
-                0x33e347c4                his_quote
-                0x33e347c8                send_ptr
-                0x33e347cc                send_parms
-                0x33e347f4                current_mtd_dev
-                0x33e347f8                devices
-                0x33e34800                current_mtd_partnum
-                0x33e34a14                mtdids
-                0x33e34ab0                mem_malloc_brk
-                0x33e34ab4                mem_malloc_start
-                0x33e34ab8                mem_malloc_end
-                0x33e34af4                env_htab
-                0x33e34b00                env_ptr
-                0x33e34c50                last_return_code
-                0x33e34d58                nesting_level
-                0x33e34d68                hist_num
-                0x33e34d6c                hist_lines
-                0x33e36180                hist_list
-                0x33e361d0                console_buffer
-                0x33e36318                stdio_devices
-                0x33e36324                otg
-                0x33e363a8                speed
-                0x33e363ac                remode_wakeup
-                0x33e363b0                get_status
-                0x33e363b6                config_value
-                0x33e363b8                get_intf
-                0x33e363bc                s3c_usbd_dn_addr
-                0x33e363c0                usb_download_filesize
-                0x33e363c4                s3c_usbd_dn_cnt
-                0x33e363c8                s3c_receive_done
-                0x33e363cc                op_mode
-                0x33e363d0                s3c_got_header
-                0x33e363d4                DNW
- .bss           0x33e36814        0x0 disk/libdisk.o
- .bss           0x33e36814        0x0 drivers/gpio/libgpio.o
- *fill*         0x33e36814        0x4 00
- .bss           0x33e36818      0x4c8 drivers/mmc/libmmc.o
-                0x33e36820                mmc_dev
-                0x33e36ca0                mmc_host
- .bss           0x33e36ce0       0x80 drivers/mtd/libmtd.o
-                0x33e36ce0                mtd_table
- .bss           0x33e36d60      0x1d8 drivers/mtd/nand/libnand.o
-                0x33e36d60                nand_info
-                0x33e36f30                nand_type
-                0x33e36f34                cur_ecc_mode
- .bss           0x33e36f38       0xe4 drivers/net/libnet.o
- .bss           0x33e3701c        0x0 drivers/pcmcia/libpcmcia.o
- .bss           0x33e3701c        0x0 drivers/rtc/librtc.o
- .bss           0x33e3701c        0x0 drivers/serial/libserial.o
- .bss           0x33e3701c    0x30008 fs/fat/libfat.o
-                0x33e37024                get_vfatname_block
-                0x33e47024                do_fat_read_block
-                0x33e57024                get_dentfromdir_block
- .bss           0x33e67024        0x8 lib/libgeneric.o
-                0x33e67024                errno
-                0x33e67028                ___strtok
- .bss           0x33e6702c        0x0 lib/zlib/libz.o
- .bss           0x33e6702c     0x2f74 net/libnet.o
-                0x33e6702c                dhcp_leasetime
-                0x33e67030                NetDHCPServerIP
-                0x33e67034                BootpID
-                0x33e67038                dhcp_state
-                0x33e6703c                BootpTry
-                0x33e67054                NetState
-                0x33e67058                NetPingIP
-                0x33e67074                NetRestartWrap
-                0x33e6707c                NetOurEther
-                0x33e67084                NetRxPacket
-                0x33e67088                NetRxPacketLen
-                0x33e6708c                NetOurIP
-                0x33e67090                NetArpWaitPacketIP
-                0x33e67094                NetArpWaitPacketMAC
-                0x33e67098                NetArpWaitReplyIP
-                0x33e6709c                NetArpWaitTxPacket
-                0x33e670a0                NetArpWaitTxPacketSize
-                0x33e670a4                NetTxPacket
-                0x33e670a8                NetOurSubnetMask
-                0x33e670ac                NetOurGatewayIP
-                0x33e670b0                NetArpWaitTimerStart
-                0x33e670b4                NetArpWaitTry
-                0x33e670c0                NetEtherNullAddr
-                0x33e670c8                NetIPID
-                0x33e670d0                PktBuf
-                0x33e68ef0                NetRxPackets
-                0x33e68f00                NetArpWaitPacketBuf
-                0x33e69524                NetServerIP
-                0x33e69528                NetBootFileXferSize
-                0x33e6952c                NetOurNISDomain
-                0x33e6954c                NetOurHostName
-                0x33e6956c                NetOurRootPath
-                0x33e695ac                NetOurDNSIP
-                0x33e695b0                NetBootFileSize
-                0x33e695b4                NetServerEther
-                0x33e695bc                BootFile
- .bss           0x33e69fa0        0x4 board/samsung/webee210/libwebee210.o(webee210.o)
- .bss           0x33e69fa4        0x0 board/samsung/webee210/libwebee210.o(lowlevel_init.o)
- .bss           0x33e69fa4        0x0 board/samsung/webee210/libwebee210.o(mem_setup.o)
- .bss           0x33e69fa4        0x0 /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
- .bss           0x33e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
-                0x33e69fa4                . = ALIGN (0x4)
-                0x33e69fa4                __bss_end__ = .
+ .bss           0x23e34644        0x0 arch/arm/cpu/armv7/start.o
+ .bss           0x23e34644        0x0 arch/arm/cpu/armv7/libarmv7.o
+ .bss           0x23e34644        0x0 arch/arm/cpu/armv7/s5p-common/libs5p-common.o
+ .bss           0x23e34644        0x0 arch/arm/cpu/armv7/s5pc1xx/libs5pc1xx.o
+ .bss           0x23e34644        0x8 arch/arm/lib/libarm.o
+                0x23e34644                monitor_flash_len
+ *fill*         0x23e3464c        0x4 00
+ .bss           0x23e34650     0x21c4 common/libcommon.o
+                0x23e34788                his_pad_count
+                0x23e3478c                his_pad_char
+                0x23e347a8                his_eol
+                0x23e347b0                os_data_init
+                0x23e347c0                os_data_char
+                0x23e347c4                his_quote
+                0x23e347c8                send_ptr
+                0x23e347cc                send_parms
+                0x23e347f4                current_mtd_dev
+                0x23e347f8                devices
+                0x23e34800                current_mtd_partnum
+                0x23e34a14                mtdids
+                0x23e34ab0                mem_malloc_brk
+                0x23e34ab4                mem_malloc_start
+                0x23e34ab8                mem_malloc_end
+                0x23e34af4                env_htab
+                0x23e34b00                env_ptr
+                0x23e34c50                last_return_code
+                0x23e34d58                nesting_level
+                0x23e34d68                hist_num
+                0x23e34d6c                hist_lines
+                0x23e36180                hist_list
+                0x23e361d0                console_buffer
+                0x23e36318                stdio_devices
+                0x23e36324                otg
+                0x23e363a8                speed
+                0x23e363ac                remode_wakeup
+                0x23e363b0                get_status
+                0x23e363b6                config_value
+                0x23e363b8                get_intf
+                0x23e363bc                s3c_usbd_dn_addr
+                0x23e363c0                usb_download_filesize
+                0x23e363c4                s3c_usbd_dn_cnt
+                0x23e363c8                s3c_receive_done
+                0x23e363cc                op_mode
+                0x23e363d0                s3c_got_header
+                0x23e363d4                DNW
+ .bss           0x23e36814        0x0 disk/libdisk.o
+ .bss           0x23e36814        0x0 drivers/gpio/libgpio.o
+ *fill*         0x23e36814        0x4 00
+ .bss           0x23e36818      0x4c8 drivers/mmc/libmmc.o
+                0x23e36820                mmc_dev
+                0x23e36ca0                mmc_host
+ .bss           0x23e36ce0       0x80 drivers/mtd/libmtd.o
+                0x23e36ce0                mtd_table
+ .bss           0x23e36d60      0x1d8 drivers/mtd/nand/libnand.o
+                0x23e36d60                nand_info
+                0x23e36f30                nand_type
+                0x23e36f34                cur_ecc_mode
+ .bss           0x23e36f38       0xe4 drivers/net/libnet.o
+ .bss           0x23e3701c        0x0 drivers/pcmcia/libpcmcia.o
+ .bss           0x23e3701c        0x0 drivers/rtc/librtc.o
+ .bss           0x23e3701c        0x0 drivers/serial/libserial.o
+ .bss           0x23e3701c    0x30008 fs/fat/libfat.o
+                0x23e37024                get_vfatname_block
+                0x23e47024                do_fat_read_block
+                0x23e57024                get_dentfromdir_block
+ .bss           0x23e67024        0x8 lib/libgeneric.o
+                0x23e67024                errno
+                0x23e67028                ___strtok
+ .bss           0x23e6702c        0x0 lib/zlib/libz.o
+ .bss           0x23e6702c     0x2f74 net/libnet.o
+                0x23e6702c                dhcp_leasetime
+                0x23e67030                NetDHCPServerIP
+                0x23e67034                BootpID
+                0x23e67038                dhcp_state
+                0x23e6703c                BootpTry
+                0x23e67054                NetState
+                0x23e67058                NetPingIP
+                0x23e67074                NetRestartWrap
+                0x23e6707c                NetOurEther
+                0x23e67084                NetRxPacket
+                0x23e67088                NetRxPacketLen
+                0x23e6708c                NetOurIP
+                0x23e67090                NetArpWaitPacketIP
+                0x23e67094                NetArpWaitPacketMAC
+                0x23e67098                NetArpWaitReplyIP
+                0x23e6709c                NetArpWaitTxPacket
+                0x23e670a0                NetArpWaitTxPacketSize
+                0x23e670a4                NetTxPacket
+                0x23e670a8                NetOurSubnetMask
+                0x23e670ac                NetOurGatewayIP
+                0x23e670b0                NetArpWaitTimerStart
+                0x23e670b4                NetArpWaitTry
+                0x23e670c0                NetEtherNullAddr
+                0x23e670c8                NetIPID
+                0x23e670d0                PktBuf
+                0x23e68ef0                NetRxPackets
+                0x23e68f00                NetArpWaitPacketBuf
+                0x23e69524                NetServerIP
+                0x23e69528                NetBootFileXferSize
+                0x23e6952c                NetOurNISDomain
+                0x23e6954c                NetOurHostName
+                0x23e6956c                NetOurRootPath
+                0x23e695ac                NetOurDNSIP
+                0x23e695b0                NetBootFileSize
+                0x23e695b4                NetServerEther
+                0x23e695bc                BootFile
+ .bss           0x23e69fa0        0x4 board/samsung/webee210/libwebee210.o(webee210.o)
+ .bss           0x23e69fa4        0x0 board/samsung/webee210/libwebee210.o(lowlevel_init.o)
+ .bss           0x23e69fa4        0x0 board/samsung/webee210/libwebee210.o(mem_setup.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/workplace/webee/webee210v2_uboot/arch/arm/lib/eabi_compat.o
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_udivsi3.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_divsi3.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_lshrdi3.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashrdi3.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_ashldi3.o)
+ .bss           0x23e69fa4        0x0 /home/lry5/下载/opt/FriendlyARM/toolschain/4.5.1/bin/../lib/gcc/arm-none-linux-gnueabi/4.5.1/libgcc.a(_dvmd_lnx.o)
+                0x23e69fa4                . = ALIGN (0x4)
+                0x23e69fa4                __bss_end__ = .
 
-.dynbss         0x33e69fa4        0x0
+.dynbss         0x23e69fa4        0x0
  .dynbss        0x00000000        0x0 arch/arm/cpu/armv7/start.o
 
 /DISCARD/
@@ -1095,7 +1095,7 @@ Linker script and memory map
  *(.plt*)
  *(.interp*)
  *(.gnu*)
-Address of section .text set to 0x33e00000
+Address of section .text set to 0x23e00000
 LOAD arch/arm/cpu/armv7/start.o
 START GROUP
 LOAD api/libapi.o
