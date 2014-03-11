@@ -280,6 +280,7 @@
 
 #if defined(CONFIG_CLK_533_133_100_100)
 
+/**********************************************need change for WEBEE210V2 ****************************/
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_TIMINGA_REF	0x40e
@@ -336,8 +337,8 @@
 #define DMC1_TIMING_PWR         0x0BDC0343      // TimingPower
 #endif
 #if defined(CONFIG_CLK_800_100_166_133) || defined(CONFIG_CLK_400_100_166_133)
-#define DMC0_MEMCONFIG_0	0x20E01323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1	0x40F01323	// MemConfig1
+#define DMC0_MEMCONFIG_0	0x20E00323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x00E00323	// MemConfig1
 #define DMC0_TIMINGA_REF	0x0000030C	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz
 #define DMC0_TIMING_DATA	0x23240304	// TimingData	CL=3
@@ -384,13 +385,30 @@
 /* MMC SPL */
 #define CONFIG_SPL
 
+/* Modified by lk for dm9000*/
+#define DM9000_16BIT_DATA
+#define CONFIG_CMD_NET
+#define CONFIG_DRIVER_DM9000       1
+#define CONFIG_NET_MULTI               1
+#define CONFIG_NET_RETRY_COUNT 1
+#define CONFIG_DM9000_NO_SROM 1
+#ifdef CONFIG_DRIVER_DM9000  
+#define CONFIG_DM9000_BASE		(0x88001000)
+#define DM9000_IO			(CONFIG_DM9000_BASE)
+#if defined(DM9000_16BIT_DATA)
+#define DM9000_DATA			(CONFIG_DM9000_BASE+0x300C)
+#else
+#define DM9000_DATA			(CONFIG_DM9000_BASE+1)
+#endif
+#endif
+/****************************/
 
 
-
+/***Modified by lk ***/
 #define CFG_PHY_UBOOT_BASE	MEMORY_BASE_ADDRESS + 0x3e00000
 #define CFG_PHY_KERNEL_BASE	MEMORY_BASE_ADDRESS + 0x8000
 
-
+/***Modified by lk ***/
 #define CONFIG_ETHADDR		00:40:5c:26:0a:5b
 #define CONFIG_NETMASK          255.255.255.0
 #define CONFIG_IPADDR		192.168.186.13
@@ -400,7 +418,7 @@
 #define CONFIG_CMD_NAND
 #if defined(CONFIG_CMD_NAND)
 #define CONFIG_CMD_NAND_YAFFS 1
-
+#define CONFIG_CMD_NAND_YAFFS2 1
 #define CONFIG_CMD_MTDPARTS
 #define CONFIG_SYS_MAX_NAND_DEVICE 1
 #define CONFIG_SYS_NAND_BASE           (0xB0E000000)
@@ -413,18 +431,21 @@
 #undef	CFG_NAND_FLASH_BBT
 #endif
 
+/* FLASH and environment organization */
 #define CONFIG_SYS_NO_FLASH             1
 #undef CONFIG_CMD_IMLS
-#define CONFIG_IDENT_STRING     " for xxx_210"
+#define CONFIG_IDENT_STRING     " for Webee_210_V2"
 #define CONFIG_DOS_PARTITION            1
 
-
-#define CONFIG_ENV_IS_IN_MMC		1
-#define CONFIG_SYS_MMC_ENV_DEV		0
-#define CONFIG_ENV_SIZE		0x4000	/* 16KB */
-#define RESERVE_BLOCK_SIZE              (512)
+/*NAND_BOOT & MMCSD_BOOT  by lk  */
+#define CONFIG_S5PC11X
+#define CONFIG_ENV_IS_IN_NAND            1
+#define CONFIG_ENV_SIZE         0x4000  /* 16KB */
+#define RESERVE_BLOCK_SIZE              (2048)
 #define BL1_SIZE                        (8 << 10) /*8 K reserved for BL1*/
-#define CONFIG_ENV_OFFSET               (RESERVE_BLOCK_SIZE + BL1_SIZE + ((16 + 512) * 1024))
-
+#define CONFIG_ENV_OFFSET               0x40000
+#define CFG_NAND_HWECC
+#define CONFIG_NAND_BL1_8BIT_ECC
+#define CONFIG_8BIT_HW_ECC_SLC      1
 
 #endif	/* __CONFIG_H */
