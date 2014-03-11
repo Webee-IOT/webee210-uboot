@@ -1709,7 +1709,7 @@ env_common.o: env_common.c \
  /home/lry5/workplace/webee/webee210v2_uboot/include/errno.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/asm-generic/errno.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/malloc.h
-env_nand.o: env_nand.c \
+env_mmc.o: env_mmc.c \
  /home/lry5/workplace/webee/webee210v2_uboot/include/common.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/config.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/config_cmd_defaults.h \
@@ -1758,13 +1758,9 @@ env_nand.o: env_nand.c \
  /home/lry5/workplace/webee/webee210v2_uboot/include/environment.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/search.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/malloc.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/nand.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/linux/mtd/compat.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/linux/mtd/mtd.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/div64.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/linux/mtd/mtd-abi.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/linux/mtd/nand.h \
- /home/lry5/workplace/webee/webee210v2_uboot/include/linux/mtd/bbm.h \
+ /home/lry5/workplace/webee/webee210v2_uboot/include/mmc.h \
+ /home/lry5/workplace/webee/webee210v2_uboot/include/linux/list.h \
+ /home/lry5/workplace/webee/webee210v2_uboot/include/linux/poison.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/errno.h \
  /home/lry5/workplace/webee/webee210v2_uboot/include/asm-generic/errno.h
 exports.o: exports.c \

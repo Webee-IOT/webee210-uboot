@@ -280,7 +280,6 @@
 
 #if defined(CONFIG_CLK_533_133_100_100)
 
-/**********************************************need change for WEBEE210V2 ****************************/
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_TIMINGA_REF	0x40e
@@ -385,30 +384,13 @@
 /* MMC SPL */
 #define CONFIG_SPL
 
-/* Modified by lk for dm9000*/
-#define DM9000_16BIT_DATA
-#define CONFIG_CMD_NET
-#define CONFIG_DRIVER_DM9000       1
-#define CONFIG_NET_MULTI               1
-#define CONFIG_NET_RETRY_COUNT 1
-#define CONFIG_DM9000_NO_SROM 1
-#ifdef CONFIG_DRIVER_DM9000  
-#define CONFIG_DM9000_BASE		(0x88001000)
-#define DM9000_IO			(CONFIG_DM9000_BASE)
-#if defined(DM9000_16BIT_DATA)
-#define DM9000_DATA			(CONFIG_DM9000_BASE+0x300C)
-#else
-#define DM9000_DATA			(CONFIG_DM9000_BASE+1)
-#endif
-#endif
-/****************************/
 
 
-/***Modified by lk ***/
+
 #define CFG_PHY_UBOOT_BASE	MEMORY_BASE_ADDRESS + 0x3e00000
 #define CFG_PHY_KERNEL_BASE	MEMORY_BASE_ADDRESS + 0x8000
 
-/***Modified by lk ***/
+
 #define CONFIG_ETHADDR		00:40:5c:26:0a:5b
 #define CONFIG_NETMASK          255.255.255.0
 #define CONFIG_IPADDR		192.168.186.13
@@ -418,7 +400,7 @@
 #define CONFIG_CMD_NAND
 #if defined(CONFIG_CMD_NAND)
 #define CONFIG_CMD_NAND_YAFFS 1
-#define CONFIG_CMD_NAND_YAFFS2 1
+
 #define CONFIG_CMD_MTDPARTS
 #define CONFIG_SYS_MAX_NAND_DEVICE 1
 #define CONFIG_SYS_NAND_BASE           (0xB0E000000)
@@ -431,21 +413,18 @@
 #undef	CFG_NAND_FLASH_BBT
 #endif
 
-/* FLASH and environment organization */
 #define CONFIG_SYS_NO_FLASH             1
 #undef CONFIG_CMD_IMLS
-#define CONFIG_IDENT_STRING     " for Webee_210_V2"
+#define CONFIG_IDENT_STRING     " for xxx_210"
 #define CONFIG_DOS_PARTITION            1
 
-/*NAND_BOOT & MMCSD_BOOT  by lk  */
-#define CONFIG_S5PC11X
-#define CONFIG_ENV_IS_IN_NAND            1
-#define CONFIG_ENV_SIZE         0x4000  /* 16KB */
-#define RESERVE_BLOCK_SIZE              (2048)
+
+#define CONFIG_ENV_IS_IN_MMC		1
+#define CONFIG_SYS_MMC_ENV_DEV		0
+#define CONFIG_ENV_SIZE		0x4000	/* 16KB */
+#define RESERVE_BLOCK_SIZE              (512)
 #define BL1_SIZE                        (8 << 10) /*8 K reserved for BL1*/
-#define CONFIG_ENV_OFFSET               0x40000
-#define CFG_NAND_HWECC
-#define CONFIG_NAND_BL1_8BIT_ECC
-#define CONFIG_8BIT_HW_ECC_SLC      1
+#define CONFIG_ENV_OFFSET               (RESERVE_BLOCK_SIZE + BL1_SIZE + ((16 + 512) * 1024))
+
 
 #endif	/* __CONFIG_H */
