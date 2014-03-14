@@ -308,8 +308,8 @@
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_MEMCONTROL		0x00202400	// MemControl	BL=4, 1Chip, DDR2 Type, dynamic self refresh, force precharge, dynamic power down off
-#define DMC0_MEMCONFIG_0	0x20F00313      //0x20E00323// MemConfig0 256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1	0x00F00313      //0x00E00323	// MemConfig1
+#define DMC0_MEMCONFIG_0	0x20E00323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x00E00323	// MemConfig1
 #if 0
 #define DMC0_TIMINGA_REF	0x00000618	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz
@@ -337,8 +337,8 @@
 #define DMC1_TIMING_PWR         0x0BDC0343      // TimingPower
 #endif
 #if defined(CONFIG_CLK_800_100_166_133) || defined(CONFIG_CLK_400_100_166_133)
-#define DMC0_MEMCONFIG_0	0x20F00313      //0x20E00323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1	0x00F00313      //0x00E00323	// MemConfig1
+#define DMC0_MEMCONFIG_0	0x20E00323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x00E00323	// MemConfig1
 #define DMC0_TIMINGA_REF	0x0000030C	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz
 #define DMC0_TIMING_DATA	0x23240304	// TimingData	CL=3
