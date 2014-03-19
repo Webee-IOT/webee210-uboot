@@ -192,8 +192,7 @@ void dram_init_banksize(void)
                                                        PHYS_SDRAM_1_SIZE);
 
         gd->bd->bi_dram[1].start = PHYS_SDRAM_2;
-        gd->bd->bi_dram[1].size = get_ram_size((long *)PHYS_SDRAM_2, \
-                                                    PHYS_SDRAM_2_SIZE);
+        gd->bd->bi_dram[1].size = get_ram_size((long *)PHYS_SDRAM_2,PHYS_SDRAM_2_SIZE);
 }
 
 #ifdef BOARD_LATE_INIT
@@ -266,29 +265,27 @@ int checkboard(void)
 #ifdef CONFIG_MCP_SINGLE
 ulong virt_to_phy_smdkc110(ulong addr)
 {
-	if ((0xc0000000 <= addr) && (addr < 0xd0000000))
-		return (addr - 0xc0000000 + 0x20000000);
-	else
-		printf("The input address don't need "\
-			"a virtual-to-physical translation : %08lx\n", addr);
+        if ((0xc0000000 <= addr) && (addr < 0xd0000000))
+                return (addr - 0xc0000000 + MEMORY_BASE_ADDRESS); //yan
+        else
 
-	return addr;
+        return addr;
 }
 #else
 ulong virt_to_phy_smdkc110(ulong addr)
 {
-	if ((0xc0000000 <= addr) && (addr < 0xd0000000))
-		return (addr - 0xc0000000 + 0x30000000);
-	else if ((0x30000000 <= addr) && (addr < 0x50000000))
-		return addr;
-	else
-		printf("The input address don't need "\
-			"a virtual-to-physical translation : %08lx\n", addr);
+        if ((0xc0000000 <= addr) && (addr < 0xd0000000))
+                return (addr - 0xc0000000 + 0x30000000);
+        else if ((0x30000000 <= addr) && (addr < 0x50000000))
+                return addr;
+        else
+                printf("The input address don't need "\
+                        "a virtual-to-physical translation : %08lx\n", addr);
 
-	return addr;
+        return addr;
 }
 #endif
-
+	
 #endif
 
 #if defined(CONFIG_CMD_NAND) && defined(CFG_NAND_LEGACY)

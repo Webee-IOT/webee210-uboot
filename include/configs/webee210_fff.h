@@ -60,25 +60,17 @@
 #define CONFIG_L2_OFF                   1
 #define CONFIG_SYS_DCACHE_OFF           1
 
-#define CONFIG_SYS_SDRAM_BASE   0x30000000      
-#define CONFIG_SYS_TEXT_BASE            0x33E00000
+
+#define CONFIG_SYS_SDRAM_BASE	0x30000000
 #define MEMORY_BASE_ADDRESS	CONFIG_SYS_SDRAM_BASE
-
-//#define MEMORY_BASE_ADDRESS	0x20000000
 #define MEMORY_BASE_ADDRESS2	0x40000000
+#define CONFIG_SYS_TEXT_BASE     0x33E00000
 
-/* input clock of PLL: MINI210 has 24MHz input clock */
-#define CONFIG_SYS_CLK_FREQ		24000000
+/* input clock of PLL */
+#define CONFIG_SYS_CLK_FREQ	24000000	/* the SMDK6400 has 24MHz input clock */
 
-#ifndef CONFIG_SYS_DCACHE_OFF
 #define CONFIG_ENABLE_MMU
 
-#ifdef CONFIG_ENABLE_MMU
-#define virt_to_phys(x)	virt_to_phy_smdkc110(x)
-#else
-#define virt_to_phys(x)	(x)
-#endif
-#endif
 #define CONFIG_MEMORY_UPPER_CODE
 
 #undef CONFIG_USE_IRQ				/* we don't need IRQ/FIQ stuff */
@@ -94,24 +86,6 @@
 #define CONFIG_CMDLINE_TAG
 #define CONFIG_INITRD_TAG
 #define CONFIG_CMDLINE_EDITING
-
-/* Modified by lk for dm9000*/
-#define DM9000_16BIT_DATA
-#define CONFIG_CMD_NET
-#define CONFIG_DRIVER_DM9000       1
-#define CONFIG_NET_MULTI               1
-#define CONFIG_NET_RETRY_COUNT 1
-#define CONFIG_DM9000_NO_SROM 1
-#ifdef CONFIG_DRIVER_DM9000  
-#define CONFIG_DM9000_BASE		(0x88001000)
-#define DM9000_IO			(CONFIG_DM9000_BASE)
-#if defined(DM9000_16BIT_DATA)
-#define DM9000_DATA			(CONFIG_DM9000_BASE+0x300C)
-#else
-#define DM9000_DATA			(CONFIG_DM9000_BASE+1)
-#endif
-#endif
-/****************************/
 
 /* MACH_TYPE_MINI210 macro will be removed once added to mach-types */
 #define MACH_TYPE_WEBEE210		2456
@@ -169,7 +143,7 @@
 #define CONFIG_SYS_MEMTEST_END		(MEMORY_BASE_ADDRESS + 0x3E00000)		/* 256 MB in DRAM	    */
 #define CONFIG_SYS_LOAD_ADDR		MEMORY_BASE_ADDRESS                             /*(PHYS_SDRAM_1 + 0x1000000)*/
 
-#define CFG_LOAD_ADDR		MEMORY_BASE_ADDRESS	/* default load address	*/
+#define CONFIG_SYS_INIT_SP_ADDR (CONFIG_SYS_LOAD_ADDR - GENERATED_GBL_DATA_SIZE)
 
 /* the PWM TImer 4 uses a counter of 41687 for 10 ms, so we need */
 /* it to wrap 100 times (total 4168750) to get 1 sec. */
@@ -178,24 +152,18 @@
 /* valid baudrates */
 #define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
 
-/* Stack sizes */
+/*-----------------------------------------------------------------------
+ * Stack sizes
+ *
+ * The stack sizes are set up in start.S using the settings below
+ */
 #define CONFIG_STACKSIZE	0x40000		/* regular stack 256KB */
-
 #ifdef CONFIG_USE_IRQ
 #define CONFIG_STACKSIZE_IRQ	(4*1024)	/* IRQ stack */
 #define CONFIG_STACKSIZE_FIQ	(4*1024)	/* FIQ stack */
 #endif
 
-#define CONFIG_SYS_INIT_SP_ADDR (CONFIG_SYS_LOAD_ADDR - GENERATED_GBL_DATA_SIZE)
-
-
-//#define CONFIG_CLK_667_166_166_133
-//#define CONFIG_CLK_533_133_100_100
-//#define CONFIG_CLK_800_200_166_133
-//#define CONFIG_CLK_800_100_166_133
 #define CONFIG_CLK_1000_200_166_133
-//#define CONFIG_CLK_400_200_166_133
-//#define CONFIG_CLK_400_100_166_133
 
 #if defined(CONFIG_CLK_667_166_166_133)
 #define APLL_MDIV       0xfa
@@ -218,7 +186,6 @@
 #define APLL_SDIV       0x1
 #endif
 
-//#define APLL_LOCKTIME_VAL	0x2cf
 #define APLL_LOCKTIME_VAL	0xe10 
 #define MPLL_LOCKTIME_VAL	0xe10 
 
@@ -300,7 +267,6 @@
 
 #if defined(CONFIG_CLK_533_133_100_100)
 
-/**********************************************need change for WEBEE210V2 ****************************/
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_TIMINGA_REF	0x40e
@@ -328,8 +294,8 @@
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_MEMCONTROL		0x00202400	// MemControl	BL=4, 1Chip, DDR2 Type, dynamic self refresh, force precharge, dynamic power down off
-#define DMC0_MEMCONFIG_0        0x30F00313      // MemConfig0   256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1        0x00F00313      // MemConfig1
+#define DMC0_MEMCONFIG_0	0x30F00313	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x00F00313	// MemConfig1
 #define DMC0_TIMINGA_REF        0x00000618      // TimingAref   7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW         0x2B34438A      // TimingRow    for @200MHz
 #define DMC0_TIMING_DATA        0x24240000      // TimingData   CL=3
@@ -343,8 +309,8 @@
 #define DMC1_TIMING_DATA        0x24240000      // TimingData   CL=3
 #define DMC1_TIMING_PWR         0x0BDC0343      // TimingPower
 #if defined(CONFIG_CLK_800_100_166_133) || defined(CONFIG_CLK_400_100_166_133)
-#define DMC0_MEMCONFIG_0        0x20E01323      // MemConfig0   256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1        0x40F01323      // MemConfig1
+#define DMC0_MEMCONFIG_0	0x20E01323	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x40F01323	// MemConfig1
 #define DMC0_TIMINGA_REF	0x0000030C	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz
 #define DMC0_TIMING_DATA	0x23240304	// TimingData	CL=3
@@ -363,7 +329,7 @@
 
 #error "You should define memory type (AC type or H type)"
 
-#endif
+#endif //
 
 #else
 
@@ -388,19 +354,34 @@
 #define UART_UDIVSLOT_VAL	0xDDDD
 #endif
 
+#define CONFIG_NR_DRAM_BANKS    2          /* we have 2 bank of DRAM */
+#define SDRAM_BANK_SIZE         0x10000000    /* 512 MB */
+#define PHYS_SDRAM_1            MEMORY_BASE_ADDRESS /* SDRAM Bank #1 */
+#define PHYS_SDRAM_1_SIZE	SDRAM_BANK_SIZE
+#define PHYS_SDRAM_2            MEMORY_BASE_ADDRESS2 /* SDRAM Bank #2 */
+#define PHYS_SDRAM_2_SIZE	SDRAM_BANK_SIZE
+
+
 /* MMC SPL */
 #define CONFIG_SPL
 
-#define CONFIG_NR_DRAM_BANKS    2          /* we have 2 bank of DRAM */
-#define SDRAM_BANK_SIZE         0x10000000    /* 512 MB */
-//#define SDRAM_BANK_SIZE         0x20000000    /* 1GB*/
-#define PHYS_SDRAM_1            MEMORY_BASE_ADDRESS /* SDRAM Bank #1 */
-#define PHYS_SDRAM_1_SIZE       SDRAM_BANK_SIZE
-#define PHYS_SDRAM_2            MEMORY_BASE_ADDRESS2 /* SDRAM Bank #2 */
-#define PHYS_SDRAM_2_SIZE       SDRAM_BANK_SIZE
-
-#define CFG_FLASH_BASE		0x80000000
-
+/* Modified by lk for dm9000*/
+#define DM9000_16BIT_DATA
+#define CONFIG_CMD_NET
+#define CONFIG_DRIVER_DM9000       1
+#define CONFIG_NET_MULTI               1
+#define CONFIG_NET_RETRY_COUNT 1
+#define CONFIG_DM9000_NO_SROM 1
+#ifdef CONFIG_DRIVER_DM9000  
+#define CONFIG_DM9000_BASE		(0x88001000)
+#define DM9000_IO			(CONFIG_DM9000_BASE)
+#if defined(DM9000_16BIT_DATA)
+#define DM9000_DATA			(CONFIG_DM9000_BASE+0x300C)
+#else
+#define DM9000_DATA			(CONFIG_DM9000_BASE+1)
+#endif
+#endif
+/****************************/
 
 
 /***Modified by lk ***/

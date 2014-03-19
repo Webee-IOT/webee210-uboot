@@ -536,7 +536,7 @@ find_lock_val1:
 	ldr	r1, =0x0FFF1010				@auto refresh off
 	str	r1, [r0, #DMC_CONCONTROL]
 
-	ldr	r1, =0x00212100
+	ldr	r1, =DMC1_MEMCONTROL
 	str	r1, [r0, #DMC_MEMCONTROL]
 
 	ldr	r1, =DMC1_MEMCONFIG_0
