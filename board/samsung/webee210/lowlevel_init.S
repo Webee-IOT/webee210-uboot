@@ -118,15 +118,6 @@ lowlevel_init:
 	bl system_clock_init
 
 
-/* add */
-        /* Print 'K' */
-        ldr     r0, =ELFIN_UART_CONSOLE_BASE
-        ldr     r1, =0x4b4b4b4b
-        str     r1, [r0, #UTXH_OFFSET]
-
-
-
-
 	/* Memory initialize */
 	bl mem_ctrl_asm_init
 

@@ -161,7 +161,7 @@
 #define CONFIG_STACKSIZE_FIQ	(4*1024)	/* FIQ stack */
 #endif
 
-#define CONFIG_SYS_INIT_SP_ADDR (CONFIG_SYS_LOAD_ADDR - GENERATED_GBL_DATA_SIZE)
+#define CONFIG_SYS_INIT_SP_ADDR 0x33e00000
 
 /**********************************************need change for WEBEE210V2 ****************************/
 /* MINI210 has 4 bank of DRAM */
