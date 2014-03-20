@@ -48,13 +48,13 @@ U_BOOT_CMD(
 				{
 					printf("\n");
 					printf("Download the uboot into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x20000000");
+					strcpy(cmd_buf, "dnw 0x30000000");
 					run_command(cmd_buf, 0);
 					
 					strcpy(cmd_buf, "nand erase  0 0x80000");
 					run_command(cmd_buf, 0);
 					
-					sprintf(cmd_buf,"nand write 0x20000000 0 %x",usb_download_filesize);
+					sprintf(cmd_buf,"nand write 0x30000000 0 %x",usb_download_filesize);
 					run_command(cmd_buf, 0);
 					break;
 				}
@@ -63,13 +63,13 @@ U_BOOT_CMD(
 				{
 					printf("\n");
 					printf("Download the kernel into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x20000000");
+					strcpy(cmd_buf, "dnw 0x30000000");
 					run_command(cmd_buf, 0);
 					
 					strcpy(cmd_buf, "nand erase  0x100000 0x300000");
 					run_command(cmd_buf, 0);
 					
-					sprintf(cmd_buf,"nand write 0x20000000 0x100000 %x",usb_download_filesize);
+					sprintf(cmd_buf,"nand write 0x30000000 0x100000 %x",usb_download_filesize);
 					run_command(cmd_buf, 0);
 					break;
 				}
@@ -78,13 +78,13 @@ U_BOOT_CMD(
 				{
 					printf("\n");
 					printf("Download the filesystem into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x20000000");
+					strcpy(cmd_buf, "dnw 0x30000000");
 					run_command(cmd_buf, 0);
 
 					strcpy(cmd_buf, "nand erase  0x600000 0x12c00000");/*erase 300M*/
 					run_command(cmd_buf, 0);
 					
-					sprintf(cmd_buf,"nand write.yaffs 0x20000000 0x600000 %x",usb_download_filesize);
+					sprintf(cmd_buf,"nand write.yaffs 0x30000000 0x600000 %x",usb_download_filesize);
 					run_command(cmd_buf, 0);
 					break;
 				}
@@ -93,7 +93,7 @@ U_BOOT_CMD(
 				{                                                                                                                      
 				    printf("\n");
 					printf("Download the program(Webee210_test) into RAM and run it \n");
-				    strcpy(cmd_buf, "dnw 0x20000000;go 0x20000000");
+				    strcpy(cmd_buf, "dnw 0x30000000;go 0x30000000");
 				    run_command(cmd_buf, 0);                                                                                       
 				    break;                                                                                               
 				}
@@ -104,11 +104,11 @@ U_BOOT_CMD(
 					printf("Boot the linux (YAFFS2)\n");
 					strcpy(cmd_buf, "setenv bootargs noinitrd root=/dev/mtdblock2 init=/linuxrc console=ttySAC0,115200 rootfstype=yaffs2 mem=512M");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "setenv bootcmd 'nand read 0x20007fc0 0x100000 0x500000;bootm 0x20007fc0'; save");
+					strcpy(cmd_buf, "setenv bootcmd 'nand read 0x30007fc0 0x100000 0x500000;bootm 0x30007fc0'; save");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "nand read 0x20007fc0 0x100000 0x500000");
+					strcpy(cmd_buf, "nand read 0x30007fc0 0x100000 0x500000");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "bootm 0x20007fc0");
+					strcpy(cmd_buf, "bootm 0x30007fc0");
 					run_command(cmd_buf, 0);
 					break;
 				}  	
@@ -138,13 +138,13 @@ U_BOOT_CMD(
 					printf("Boot the linux (NFS)\n");
 					strcpy(cmd_buf, "setenv bootargs noinitrd root=/dev/nfs nfsroot=192.168.0.136:/root/rootfs,tcp ip=192.168.0.164:192.168.0.136:192.168.0.1:255.255.255.0::eth0:off init=/linuxrc console=ttySAC0,115200");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "setenv bootcmd 'nand read 0x20007fc0 0x100000 0x500000;bootm 0x20007fc0'; save");
+					strcpy(cmd_buf, "setenv bootcmd 'nand read 0x30007fc0 0x100000 0x500000;bootm 0x30007fc0'; save");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "nand read 0x20007fc0 0x100000 0x500000");
+					strcpy(cmd_buf, "nand read 0x30007fc0 0x100000 0x500000");
 					run_command(cmd_buf, 0);
 					strcpy(cmd_buf, "set ipaddr 192.168.0.164;set serverip 192.168.0.136;save");
 					run_command(cmd_buf, 0);
-					strcpy(cmd_buf, "bootm 0x20007fc0");
+					strcpy(cmd_buf, "bootm 0x30007fc0");
 					run_command(cmd_buf, 0);
 					break;
 				}    
