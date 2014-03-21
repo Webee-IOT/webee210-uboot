@@ -143,8 +143,7 @@
 /* memtest works on */
 #define CONFIG_SYS_MEMTEST_START	MEMORY_BASE_ADDRESS
 #define CONFIG_SYS_MEMTEST_END		(MEMORY_BASE_ADDRESS + 0x3E00000)		/* 256 MB in DRAM	    */
-#define CONFIG_SYS_LOAD_ADDR		MEMORY_BASE_ADDRESS                             /*(PHYS_SDRAM_1 + 0x1000000)*/
-
+#define CONFIG_SYS_LOAD_ADDR		(PHYS_SDRAM_1 + 0x1000000)              /* MEMORY_BASE_ADDRESS  */    
 
 /* the PWM TImer 4 uses a counter of 41687 for 10 ms, so we need */
 /* it to wrap 100 times (total 4168750) to get 1 sec. */
@@ -161,9 +160,14 @@
 #define CONFIG_STACKSIZE_FIQ	(4*1024)	/* FIQ stack */
 #endif
 
+#if 0
 #define CONFIG_SYS_INIT_SP_ADDR 0x33e00000
+#endif
 
-/**********************************************need change for WEBEE210V2 ****************************/
+#if 1
+#define CONFIG_SYS_INIT_SP_ADDR (CONFIG_SYS_LOAD_ADDR - GENERATED_GBL_DATA_SIZE)
+#endif
+
 /* MINI210 has 4 bank of DRAM */
 #define CONFIG_NR_DRAM_BANKS	2
 #define SDRAM_BANK_SIZE		0x10000000	/*  256 MB */
