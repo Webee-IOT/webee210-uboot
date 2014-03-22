@@ -52,6 +52,7 @@ COBJS-y += cmd_sound.o
 COBJS-y += cmd_usbd.o
 COBJS-y += usbd-otg-hs.o
 COBJS-y += cmd_menu.o
+COBJS-y += cmd_fastboot.o
 
 # environment
 COBJS-y += env_common.o

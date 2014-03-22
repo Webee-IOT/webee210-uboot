@@ -277,6 +277,7 @@ void board_init_f(ulong bootflag)
 	/* compiler optimization barrier needed for GCC >= 3.4 */
 	__asm__ __volatile__("": : :"memory");
 
+
 	memset((void *)gd, 0, sizeof(gd_t));
 
 	gd->mon_len = _bss_end_ofs;
@@ -346,10 +347,14 @@ void board_init_f(ulong bootflag)
 #ifdef CONFIG_LCD
 #ifdef CONFIG_FB_ADDR
 	gd->fb_base = CONFIG_FB_ADDR;
+
+	debug("Top the fb_base addr is : %08lx\n", gd->fb_base);
 #else
 	/* reserve memory for LCD display (always full pages) */
 	addr = lcd_setmem(addr);
 	gd->fb_base = addr;
+
+	debug("Top the fb_base addr is : %08lx\n", gd->fb_base);
 #endif /* CONFIG_FB_ADDR */
 #endif /* CONFIG_LCD */
 

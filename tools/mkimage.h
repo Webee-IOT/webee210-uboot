@@ -34,7 +34,8 @@
 #include <sha1.h>
 #include "fdt_host.h"
 
-#undef MKIMAGE_DEBUG
+//#undef MKIMAGE_DEBUG
+#define MKIMAGE_DEBUG
 
 #ifdef MKIMAGE_DEBUG
 #define debug(fmt,args...)	printf (fmt ,##args)

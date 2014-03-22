@@ -44,6 +44,32 @@
 #define CONFIG_MCP_SINGLE	1
 #define CONFIG_EVT1		1		/* EVT1 */
 
+#define DEBUG 1
+#define CONFIG_FASTBOOT		1
+
+#define CONFIG_X210  1
+
+/* Fastboot variables */
+#define CFG_FASTBOOT_TRANSFER_BUFFER		(0x40000000)
+#define CFG_FASTBOOT_TRANSFER_BUFFER_SIZE	(0xC000000)   /* 128MB */
+#define CFG_FASTBOOT_ADDR_KERNEL		(0xC0008000)
+#define CFG_FASTBOOT_ADDR_RAMDISK		(0x30A00000)
+#define CFG_FASTBOOT_PAGESIZE			(2048)	/* Page size of booting device*/
+#define CFG_FASTBOOT_SDMMC_BLOCKSIZE		(512)	/*Block size of sdmmc*/
+
+
+#define CFG_FASTBOOT_NANDBSP 
+
+
+
+#define CFG_ENV_ADDR		0
+#define CFG_ENV_SIZE		0x4000	/* Total Size of Environment Sector */
+#define CFG_MAXARGS		16		/* max number of command args	*/
+
+#define CFG_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
+#define CONFIG_CMD_MOVINAND
+
+
 #if 0
 //#define CONFIG_FASTBOOT		1
 //#define CONFIG_FUSED		1		/* Fused chip */
@@ -153,7 +179,7 @@
 #define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
 
 /* Stack sizes */
-#define CONFIG_STACKSIZE	0x40000		/* regular stack 256KB */
+#define CONFIG_STACKSIZE		 512*1024		/* regular stack 256KB */
 
 #ifdef CONFIG_USE_IRQ
 #define CONFIG_STACKSIZE_IRQ	(4*1024)	/* IRQ stack */

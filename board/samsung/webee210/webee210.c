@@ -180,7 +180,7 @@ int dram_init(void)
 	/* Since we have discontinuous RAM configuration, just put
 	 * bank1 here for relocation
 	 */
-        gd->ram_size    = get_ram_size((long *)PHYS_SDRAM_1, PHYS_SDRAM_1_SIZE);
+        gd->ram_size    = get_ram_size((long *)PHYS_SDRAM_1, PHYS_SDRAM_1_SIZE+PHYS_SDRAM_2_SIZE);
 
 	return 0;
 }
