@@ -44,55 +44,6 @@
 #define CONFIG_MCP_SINGLE	1
 #define CONFIG_EVT1		1		/* EVT1 */
 
-#define DEBUG 1
-#define CONFIG_FASTBOOT		1
-
-#define CONFIG_X210  1
-
-
-/* Fastboot variables */
-#define CFG_FASTBOOT_TRANSFER_BUFFER		(0x40000000)
-#define CFG_FASTBOOT_TRANSFER_BUFFER_SIZE	(0xc0000000)   /* 256MB */
-
-#define CFG_FASTBOOT_ADDR_KERNEL		(0xC0008000)
-#define CFG_FASTBOOT_ADDR_RAMDISK		(0x30A00000)
-#define CFG_FASTBOOT_PAGESIZE			(2048)			/*Page size of booting device*/
-#define CFG_FASTBOOT_SDMMC_BLOCKSIZE		(512)			/*Block size of sdmmc*/
-
-/* Just one BSP type should be defined. */
-/*
-#define CFG_FASTBOOT_SDMMCBSP
-*/
-#define CFG_FASTBOOT_NANDBSP
-
-/* IROM specific data */
-#define SDMMC_BLK_SIZE        (0xD003A500)
-#define COPY_SDMMC_TO_MEM     (0xD003E008)
-
-/* SD/MMC configuration */
-#define CONFIG_MMC
-#define CONFIG_GENERIC_MMC
-#define CONFIG_S3C_HSMMC
-#define DEBUG_S3C_HSMMC
-#undef DEBUG_S3C_HSMMC
-
-/* The macro for MMC channel 0 is defined by default and can't be undefined */
-#define USE_MMC0
-/*#define USE_MMC0_8BIT  */
-#define USE_MMC2
-#define MMC_MAX_CHANNEL		4
-
-
-
-
-#define CFG_ENV_ADDR		0
-#define CFG_ENV_SIZE		0x4000	/* Total Size of Environment Sector */
-#define CFG_MAXARGS		16		/* max number of command args	*/
-
-#define CFG_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
-#define CONFIG_CMD_MOVINAND
-
-
 #if 0
 //#define CONFIG_FASTBOOT		1
 //#define CONFIG_FUSED		1		/* Fused chip */
@@ -152,6 +103,8 @@
 #define S5PC210_DEFAULT_UART_OFFSET	0x020000
 
 /* SD/MMC configuration */
+#define CONFIG_GENERIC_MMC		1
+#define CONFIG_MMC			1
 #define CONFIG_S5P_MMC			1
 
 /* PWM */
@@ -166,9 +119,7 @@
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_ELF
 #define CONFIG_CMD_DHCP
-/*
 #define CONFIG_CMD_MMC
-*/
 #define CONFIG_CMD_FAT
 #if 0
 //#undef CONFIG_CMD_NET
@@ -192,7 +143,8 @@
 /* memtest works on */
 #define CONFIG_SYS_MEMTEST_START	MEMORY_BASE_ADDRESS
 #define CONFIG_SYS_MEMTEST_END		(MEMORY_BASE_ADDRESS + 0x3E00000)		/* 256 MB in DRAM	    */
-#define CONFIG_SYS_LOAD_ADDR		(PHYS_SDRAM_1 + 0x1000000)              /* MEMORY_BASE_ADDRESS  */    
+#define CONFIG_SYS_LOAD_ADDR		MEMORY_BASE_ADDRESS                             /*(PHYS_SDRAM_1 + 0x1000000)*/
+
 
 /* the PWM TImer 4 uses a counter of 41687 for 10 ms, so we need */
 /* it to wrap 100 times (total 4168750) to get 1 sec. */
@@ -202,21 +154,16 @@
 #define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
 
 /* Stack sizes */
-#define CONFIG_STACKSIZE		 512*1024		/* regular stack 256KB */
+#define CONFIG_STACKSIZE	0x40000		/* regular stack 256KB */
 
 #ifdef CONFIG_USE_IRQ
 #define CONFIG_STACKSIZE_IRQ	(4*1024)	/* IRQ stack */
 #define CONFIG_STACKSIZE_FIQ	(4*1024)	/* FIQ stack */
 #endif
 
-#if 0
-#define CONFIG_SYS_INIT_SP_ADDR 0x33e00000
-#endif
-
-#if 1
 #define CONFIG_SYS_INIT_SP_ADDR (CONFIG_SYS_LOAD_ADDR - GENERATED_GBL_DATA_SIZE)
-#endif
 
+/**********************************************need change for WEBEE210V2 ****************************/
 /* MINI210 has 4 bank of DRAM */
 #define CONFIG_NR_DRAM_BANKS	2
 #define SDRAM_BANK_SIZE		0x10000000	/*  256 MB */
@@ -361,8 +308,8 @@
 #if defined(CONFIG_MCP_SINGLE)
 
 #define DMC0_MEMCONTROL		0x00202400	// MemControl	BL=4, 1Chip, DDR2 Type, dynamic self refresh, force precharge, dynamic power down off
-#define DMC0_MEMCONFIG_0	0x30f00313	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
-#define DMC0_MEMCONFIG_1	0x00f00313	// MemConfig1
+#define DMC0_MEMCONFIG_0	0x20E00313	// MemConfig0	256MB config, 8 banks,Mapping Method[12:15]0:linear, 1:linterleaved, 2:Mixed
+#define DMC0_MEMCONFIG_1	0x00E00313	// MemConfig1
 #if 0
 #define DMC0_TIMINGA_REF	0x00000618	// TimingAref	7.8us*133MHz=1038(0x40E), 100MHz=780(0x30C), 20MHz=156(0x9C), 10MHz=78(0x4E)
 #define DMC0_TIMING_ROW		0x28233287	// TimingRow	for @200MHz

@@ -180,7 +180,7 @@ int dram_init(void)
 	/* Since we have discontinuous RAM configuration, just put
 	 * bank1 here for relocation
 	 */
-        gd->ram_size    = get_ram_size((long *)PHYS_SDRAM_1, PHYS_SDRAM_1_SIZE);
+        gd->ram_size    = get_ram_size((long *)PHYS_SDRAM_1, PHYS_SDRAM_1_SIZE+PHYS_SDRAM_2_SIZE);
 
 	return 0;
 }
@@ -191,9 +191,8 @@ void dram_init_banksize(void)
         gd->bd->bi_dram[0].size = get_ram_size((long *)PHYS_SDRAM_1, \
                                                        PHYS_SDRAM_1_SIZE);
 
-//        gd->bd->bi_dram[1].start = PHYS_SDRAM_2;
-  //      gd->bd->bi_dram[1].size = get_ram_size((long *)PHYS_SDRAM_2, \
-    //                                                    PHYS_SDRAM_2_SIZE);
+        gd->bd->bi_dram[1].start = PHYS_SDRAM_2;
+        gd->bd->bi_dram[1].size = get_ram_size((long *)PHYS_SDRAM_2,PHYS_SDRAM_2_SIZE);
 }
 
 #ifdef BOARD_LATE_INIT
@@ -256,7 +255,7 @@ int board_eth_init(bd_t *bis)
 #ifdef CONFIG_DISPLAY_BOARDINFO
 int checkboard(void)
 {
-	printf("\nBoard:   Webee_210\n");
+	printf("\nBoard:   Webee_210_V2\n");
 	return (0);
 }
 #endif
@@ -266,29 +265,27 @@ int checkboard(void)
 #ifdef CONFIG_MCP_SINGLE
 ulong virt_to_phy_smdkc110(ulong addr)
 {
-	if ((0xc0000000 <= addr) && (addr < 0xd0000000))
-		return (addr - 0xc0000000 + 0x20000000);
-	else
-		printf("The input address don't need "\
-			"a virtual-to-physical translation : %08lx\n", addr);
+        if ((0xc0000000 <= addr) && (addr < 0xd0000000))
+                return (addr - 0xc0000000 + MEMORY_BASE_ADDRESS); //yan
+        else
 
-	return addr;
+        return addr;
 }
 #else
 ulong virt_to_phy_smdkc110(ulong addr)
 {
-	if ((0xc0000000 <= addr) && (addr < 0xd0000000))
-		return (addr - 0xc0000000 + 0x30000000);
-	else if ((0x30000000 <= addr) && (addr < 0x50000000))
-		return addr;
-	else
-		printf("The input address don't need "\
-			"a virtual-to-physical translation : %08lx\n", addr);
+        if ((0xc0000000 <= addr) && (addr < 0xd0000000))
+                return (addr - 0xc0000000 + 0x30000000);
+        else if ((0x30000000 <= addr) && (addr < 0x50000000))
+                return addr;
+        else
+                printf("The input address don't need "\
+                        "a virtual-to-physical translation : %08lx\n", addr);
 
-	return addr;
+        return addr;
 }
 #endif
-
+	
 #endif
 
 #if defined(CONFIG_CMD_NAND) && defined(CFG_NAND_LEGACY)

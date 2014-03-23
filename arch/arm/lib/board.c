@@ -273,8 +273,10 @@ void board_init_f(ulong bootflag)
 
 	/* Pointer is writable since we allocated a register for it */
 	gd = (gd_t *) ((CONFIG_SYS_INIT_SP_ADDR) & ~0x07);
+//	gd = (gd_t *) ((CONFIG_SYS_INIT_SP_ADDR) & ~0x07);
 	/* compiler optimization barrier needed for GCC >= 3.4 */
 	__asm__ __volatile__("": : :"memory");
+
 
 	memset((void *)gd, 0, sizeof(gd_t));
 
@@ -345,10 +347,14 @@ void board_init_f(ulong bootflag)
 #ifdef CONFIG_LCD
 #ifdef CONFIG_FB_ADDR
 	gd->fb_base = CONFIG_FB_ADDR;
+
+	debug("Top the fb_base addr is : %08lx\n", gd->fb_base);
 #else
 	/* reserve memory for LCD display (always full pages) */
 	addr = lcd_setmem(addr);
 	gd->fb_base = addr;
+
+	debug("Top the fb_base addr is : %08lx\n", gd->fb_base);
 #endif /* CONFIG_FB_ADDR */
 #endif /* CONFIG_LCD */
 
@@ -420,6 +426,11 @@ void board_init_f(ulong bootflag)
 	gd->start_addr_sp = addr_sp;
 	gd->reloc_off = addr - _TEXT_BASE;
 	debug("relocation Offset is: %08lx\n", gd->reloc_off);
+	
+//	printf("relocaddr is: %08lx\n", gd->relocaddr);
+//	printf("start_addr_sp is: %08lx\n", gd->start_addr_sp);
+//	printf("relocation Offset is: %08lx\n", gd->reloc_off);
+		
 	memcpy(id, (void *)gd, sizeof(gd_t));
 
 	relocate_code(addr_sp, id, addr);
@@ -456,6 +467,8 @@ void board_init_r(gd_t *id, ulong dest_addr)
 	gd->flags |= GD_FLG_RELOC;	/* tell others: relocation done */
 
 	monitor_flash_len = _end_ofs;
+	
+	//printf("hello board_init_r \n");
 
 	/* Enable caches */
 	enable_caches();

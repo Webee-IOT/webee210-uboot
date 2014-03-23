@@ -53,7 +53,7 @@ const uchar default_environment[] = {
 	"bootargs="	CONFIG_BOOTARGS			"\0"
 #endif
 #ifdef	CONFIG_BOOTCOMMAND
-	"bootcmd="	CONFIG_BOOTCOMMAND	"nand read 0x20007fc0 0x100000 0x500000;bootm 0x20007fc0\0"
+	"bootcmd="	CONFIG_BOOTCOMMAND	"nand read 0x30007fc0 0x100000 0x500000;bootm 0x30007fc0\0"
 #endif
 #ifdef	CONFIG_RAMBOOTCOMMAND
 	"ramboot="	CONFIG_RAMBOOTCOMMAND		"\0"
