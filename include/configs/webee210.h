@@ -49,16 +49,39 @@
 
 #define CONFIG_X210  1
 
+
 /* Fastboot variables */
 #define CFG_FASTBOOT_TRANSFER_BUFFER		(0x40000000)
-#define CFG_FASTBOOT_TRANSFER_BUFFER_SIZE	(0xC000000)   /* 128MB */
+#define CFG_FASTBOOT_TRANSFER_BUFFER_SIZE	(0xc0000000)   /* 256MB */
+
 #define CFG_FASTBOOT_ADDR_KERNEL		(0xC0008000)
 #define CFG_FASTBOOT_ADDR_RAMDISK		(0x30A00000)
-#define CFG_FASTBOOT_PAGESIZE			(2048)	/* Page size of booting device*/
-#define CFG_FASTBOOT_SDMMC_BLOCKSIZE		(512)	/*Block size of sdmmc*/
+#define CFG_FASTBOOT_PAGESIZE			(2048)			/*Page size of booting device*/
+#define CFG_FASTBOOT_SDMMC_BLOCKSIZE		(512)			/*Block size of sdmmc*/
 
+/* Just one BSP type should be defined. */
+/*
+#define CFG_FASTBOOT_SDMMCBSP
+*/
+#define CFG_FASTBOOT_NANDBSP
 
-#define CFG_FASTBOOT_NANDBSP 
+/* IROM specific data */
+#define SDMMC_BLK_SIZE        (0xD003A500)
+#define COPY_SDMMC_TO_MEM     (0xD003E008)
+
+/* SD/MMC configuration */
+#define CONFIG_MMC
+#define CONFIG_GENERIC_MMC
+#define CONFIG_S3C_HSMMC
+#define DEBUG_S3C_HSMMC
+#undef DEBUG_S3C_HSMMC
+
+/* The macro for MMC channel 0 is defined by default and can't be undefined */
+#define USE_MMC0
+/*#define USE_MMC0_8BIT  */
+#define USE_MMC2
+#define MMC_MAX_CHANNEL		4
+
 
 
 
@@ -129,8 +152,6 @@
 #define S5PC210_DEFAULT_UART_OFFSET	0x020000
 
 /* SD/MMC configuration */
-#define CONFIG_GENERIC_MMC		1
-#define CONFIG_MMC			1
 #define CONFIG_S5P_MMC			1
 
 /* PWM */
@@ -145,7 +166,9 @@
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_ELF
 #define CONFIG_CMD_DHCP
+/*
 #define CONFIG_CMD_MMC
+*/
 #define CONFIG_CMD_FAT
 #if 0
 //#undef CONFIG_CMD_NET

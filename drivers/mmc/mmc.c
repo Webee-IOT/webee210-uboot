@@ -413,6 +413,19 @@ static ulong mmc_bread(int dev_num, ulong start, lbaint_t blkcnt, void *dst)
 	return blkcnt;
 }
 
+
+ulong movi_write(ulong start, lbaint_t blkcnt, void *src)
+{
+		return mmc_bwrite(0, start, blkcnt, src);
+}
+
+ulong movi_read(ulong start, lbaint_t blkcnt, void *dst)
+{
+		return mmc_bread(0, start, blkcnt, dst);
+}
+
+
+
 int mmc_go_idle(struct mmc* mmc)
 {
 	struct mmc_cmd cmd;

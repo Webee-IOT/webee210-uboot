@@ -32,6 +32,7 @@ SOBJS	= cache.o
 SOBJS	+= reset.o
 
 COBJS	+= clock.o
+COBJS	+= movi.o
 COBJS	+= fimd.o
 COBJS	+= fastboot.o
 ifdef CONFIG_SPL_BUILD
