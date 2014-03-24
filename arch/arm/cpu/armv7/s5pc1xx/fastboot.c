@@ -31,40 +31,29 @@
 /* S5PC110 Default Partition Table */
 fastboot_ptentry ptable_default[] =
 {
-#if 0  // for qtopia
+#if defined(WEBEE210QT)  // for qt
 	{
-		.name     = "uboot",     //  1 M
+		.name     = "uboot",     //
 		.start    = 0x0,
-		.length   = 0x100000,
+		.length   = 0x90000,
 		.flags    = 0
 	},
 	{
-		.name     = "recovery",      //  5 M
+		.name     = "kernel",     // 
 		.start    = 0x100000,
-		.length   = 0x500000,
+		.length   = 0x300000,
 		.flags    = 0
-	},
-	{
-		.name     = "kernel",     // 5 M
-		.start    = 0x600000,
-		.length   = 0x500000,
-		.flags    = 0
-	},
-	{
-		.name 	= "ramdisk",
-		.start	= 0xb00000,
-		.length	= 0x300000,   //3 M
 	},
 	{
 		.name     = "system",    //  
-		.start    = 0xe00000,
-		.length   = 0x0,//  the left
+		.start    = 0x600000,
+		.length   = 0x12c00000,//  the left
 		.flags    = FASTBOOT_PTENTRY_FLAGS_WRITE_YAFFS
 	}
 #endif
 
 
-#if 1   //for android
+#if defined(WEBEE210ANDROID)  // for qt
 	{
 		.name     = "uboot",     //  1 M
 		.start    = 0x0,

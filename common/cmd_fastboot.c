@@ -1757,19 +1757,12 @@ int do_sdfuse (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 	{
 		LCD_turnon();
 
-		if (update_from_sd("uboot", "u-boot.bin"))
+		if (update_from_sd("uboot", "uboot.bin"))
 			goto err_sdfuse;
-		if (update_from_sd("kernel", "zImage"))
+		if (update_from_sd("kernel", "kernel.img"))
 			goto err_sdfuse;
-		if (update_from_sd("system", "gec210.img"))
+		if (update_from_sd("system", "system.img"))
 			goto err_sdfuse;
-		if (update_from_sd("userdata", "userdata.img"))
-			goto err_sdfuse;
-		if (update_from_sd("ramdisk", "ramdisk.img"))
-			goto err_sdfuse;		
-		if (update_from_sd("cache", NULL))
-			goto err_sdfuse;
-
 		enable_reset = 1;
 		ret = 0;
 	}

@@ -65,6 +65,12 @@
 */
 #define CFG_FASTBOOT_NANDBSP
 
+/*define NAND default partion table*/
+
+#define WEBEE210QT 1
+
+
+
 /* IROM specific data */
 #define SDMMC_BLK_SIZE        (0xD003A500)
 #define COPY_SDMMC_TO_MEM     (0xD003E008)
