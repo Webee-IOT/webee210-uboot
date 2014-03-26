@@ -157,9 +157,10 @@ static void pwm_pre_init(void)
 //        printf("GPD0CON  : %x, GPD0DAT  : %x\n", readl(GPD0CON), readl(GPD0DAT));
 }
 
-static int video_lcd_io_init(void)
+
+int board_init(void)
 {
-  
+      
 	writel(0x22222222, GPF0CON);    //GPF0CON set GPF0[0:7] as HSYNC,VSYNC,VDEN,VCLK,VD[0:3]
 	writel(0x0, GPF0PUD);      //GPF0PUD set pull-up,down disable
 	writel(0x22222222, GPF1CON);    //set GPF1CON[7:0] as VD[11:4]
@@ -173,13 +174,6 @@ static int video_lcd_io_init(void)
 	writel(0xffffffff, GPF1DRV);    //set GPF1DRV drive strength max by WJ.KIM(09.07.17)
 	writel(0xffffffff, GPF2DRV);    //set GPF2DRV drive strength max by WJ.KIM(09.07.17)
 	writel(0x3ff, GPF3DRV);     //set GPF3DRV drive strength max by WJ.KIM(09.07.17)
-	return 0;
-}
-
-int board_init(void)
-{
-      
-	video_lcd_io_init();
 	/* Set Initial global variables */
 	s5pc110_gpio = (struct s5pc110_gpio *)S5PC110_GPIO_BASE;
 
@@ -212,6 +206,7 @@ void board_video_reset()
 	fb->WINCON1 &= ~(S3C_WINCON_BPPMODE_16BPP_565 | S3C_WINCON_ENWIN_ENABLE |
 	S3C_WINCON_HAWSWP_ENABLE);
 } 
+
 int dram_init(void)
 {
 	/* Since we have discontinuous RAM configuration, just put

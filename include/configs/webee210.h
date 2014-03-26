@@ -49,32 +49,61 @@
 
 #define CONFIG_X210  1
 
-/*LCD ang LOGO*/
-#define  CONFIG_LCD_LOGO   1
-#define CONFIG_VIDEO_LOGO 1
-#define LOGO_BMP 1
-#define CONFIG_VIDEO_S5PV210 1
 
-#define SDRAM_MAX_SIZE		0x01000000	/* max 16 MB		*/
-#define SDRAM_RES_SIZE		0x00200000	/* 2 MB for framebuffer */
+#define CFG_LCD_NONAME1			/*for V210 - wide LCD*/
+#define CFG_LCD_FBUFFER				(0x90000000)
 
-#define LCD_VIDEO_ADDR		(SDRAM_MAX_SIZE-SDRAM_RES_SIZE)
-#define LCD_VIDEO_SIZE		SDRAM_RES_SIZE	/* 2MB */
-#define LCD_VIDEO_COLS		640
-#define LCD_VIDEO_ROWS		480
-#define LCD_VIDEO_FG		255
-#define LCD_VIDEO_BG		0
+
+#define CONFIG_LCD_LOGO
+#define   CONFIG_CFB_CONSOLE      
+/*Enables console device for a color framebuffer*/
+#define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE  (800*400+1024+100)   /* 100 = slack */
+#define VIDEO_FB_16BPP_WORD_SWAP
+#define VIDEO_FB_16BPP_PIXEL_SWAP     /*the color palette,bpp is bits per pixel*/
+#define CONFIG_VIDEO              /*Video support*/
+#define CONFIG_VIDEO_S5PV210
+#define CONFIG_VIDEO_LOGO         /*display Linux Logo in upper left corner*/
+#define CONFIG_VIDEO_BMP_LOGO        /*use bmp_logo instead of linux_logo*/
+#define CONFIG_CMD_BMP         /*BMP support*/
+/*#define CONFIG_CONSOLE_EXTRA_INFO*/
+
+
+#define CONFIG_CMD_UNZIP 
+#define CONFIG_SPLASH_SCREEN    /*enable splash screen support,implicitly enable U-Boot Bitmap Support.*/
+#define CONFIG_VIDEO_SW_CURSOR 
+#define CONFIG_SYS_CONSOLE_IS_IN_ENV
+#define CFG_VIDEO_LOGO_MAX_SIZE   (1024*768+1024+100) /* 100 = slack */ 
+#define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE    (1024*768+1024+100)  /* 100 = slack */ 
+/*#define CONFIG_VGA_AS_SINGLE_DEVICE*/
+#define CFG_CONSOLE_INFO_QUIET
+#define DEBUG_CFB_CONSOLE
+#define LCD_VIDEO_ADDR        (0x35000000)      
+/*#define LCD_VIDEO_ADDR         (0x57a00000)*/
+/*#define LCD_VIDEO_BACKGROUND*/
+
+/*for PC-keyboard*/
+#define VIDEO_KBD_INIT_FCT  0       /*init function for keyboard*/
+#define VIDEO_TSTC_FCT  serial_tstc   /*keyboard_tstc function*/
+#define VIDEO_GETC_FCT  serial_getc   /*keyboard_getc function*/
+
+#define CONFIG_EXTRA_ENV_SETTINGS     \
+ "stdin=serial\0"      \
+ "stdout=vga\0"       \
+ "stderr=vga\0"
+ 
+
+#if defined(LCD_VIDEO_BACKGROUND)  
+	#define LCD_VIDEO_BACKGROUND_ADDR         	(0x47f00000) 
+	#define LCD_VIDEO_BACKGROUND_LOADADDR         	(0x47d00000) 
+	#define LCD_VIDEO_BACKGROUND_LOADSIZE         	(0x60000) 
+	#define LCD_VIDEO_BACKGROUND_ALPHA         	(0xa)
+	#define LCD_VIDEO_BACKGROUND_IN_NAND	
+	/*#define LCD_VIDEO_BACKGROUND_IN_MMC*/	
+	#define LCD_VIDEO_BACKGROUND_FLASH_ADDR		(0x80000)
+#endif
+
+
 #define CONFIG_SYS_VIDEO_VCLOCK_HZ     (133000000)
-
-#undef	CONFIG_VIDEO				/* test only ! s.a devices.c and 8xx */
-#define CONFIG_CFB_CONSOLE			/* framebuffer console with std input */
-
-
-#define VIDEO_KBD_INIT_FCT	0		/* no KBD dev on MHPC - use serial */
-#define VIDEO_TSTC_FCT		serial_tstc
-#define VIDEO_GETC_FCT		serial_getc
-
-#define CONFIG_BR0_WORKAROUND	1
 
 
 
