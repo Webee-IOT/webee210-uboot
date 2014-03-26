@@ -50,6 +50,70 @@
 #define CONFIG_X210  1
 
 
+#define CFG_LCD_NONAME1			/*for V210 - wide LCD*/
+#define CFG_LCD_FBUFFER				(0x90000000)
+
+
+#define CONFIG_LCD_LOGO
+#define   CONFIG_CFB_CONSOLE      
+/*Enables console device for a color framebuffer*/
+#define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE  (800*400+1024+100)   /* 100 = slack */
+#define VIDEO_FB_16BPP_WORD_SWAP
+#define VIDEO_FB_16BPP_PIXEL_SWAP     /*the color palette,bpp is bits per pixel*/
+#define CONFIG_VIDEO              /*Video support*/
+#define CONFIG_VIDEO_S5PV210
+#define CONFIG_VIDEO_LOGO         /*display Linux Logo in upper left corner*/
+#define CONFIG_VIDEO_BMP_LOGO        /*use bmp_logo instead of linux_logo*/
+#define CONFIG_CMD_BMP         /*BMP support*/
+/*#define CONFIG_CONSOLE_EXTRA_INFO*/
+
+
+#define CONFIG_CMD_UNZIP 
+#define CONFIG_SPLASH_SCREEN    /*enable splash screen support,implicitly enable U-Boot Bitmap Support.*/
+#define CONFIG_VIDEO_SW_CURSOR 
+#define CONFIG_SYS_CONSOLE_IS_IN_ENV
+#define CFG_VIDEO_LOGO_MAX_SIZE   (1024*768+1024+100) /* 100 = slack */ 
+#define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE    (1024*768+1024+100)  /* 100 = slack */ 
+/*#define CONFIG_VGA_AS_SINGLE_DEVICE*/
+#define CFG_CONSOLE_INFO_QUIET
+#define DEBUG_CFB_CONSOLE
+#define LCD_VIDEO_ADDR        (0x35000000)      
+/*#define LCD_VIDEO_ADDR         (0x57a00000)*/
+/*#define LCD_VIDEO_BACKGROUND*/
+
+/*for PC-keyboard*/
+#define VIDEO_KBD_INIT_FCT  0       /*init function for keyboard*/
+#define VIDEO_TSTC_FCT  serial_tstc   /*keyboard_tstc function*/
+#define VIDEO_GETC_FCT  serial_getc   /*keyboard_getc function*/
+
+#define CONFIG_EXTRA_ENV_SETTINGS     \
+ "stdin=serial\0"      \
+ "stdout=vga\0"       \
+ "stderr=vga\0"
+ 
+
+#if defined(LCD_VIDEO_BACKGROUND)  
+	#define LCD_VIDEO_BACKGROUND_ADDR         	(0x47f00000) 
+	#define LCD_VIDEO_BACKGROUND_LOADADDR         	(0x47d00000) 
+	#define LCD_VIDEO_BACKGROUND_LOADSIZE         	(0x60000) 
+	#define LCD_VIDEO_BACKGROUND_ALPHA         	(0xa)
+	#define LCD_VIDEO_BACKGROUND_IN_NAND	
+	/*#define LCD_VIDEO_BACKGROUND_IN_MMC*/	
+	#define LCD_VIDEO_BACKGROUND_FLASH_ADDR		(0x80000)
+#endif
+
+
+#define CONFIG_SYS_VIDEO_VCLOCK_HZ     (133000000)
+
+
+
+
+
+
+
+
+
+
 /* Fastboot variables */
 #define CFG_FASTBOOT_TRANSFER_BUFFER		(0x40000000)
 #define CFG_FASTBOOT_TRANSFER_BUFFER_SIZE	(0xc0000000)   /* 256MB */
@@ -65,10 +129,9 @@
 */
 #define CFG_FASTBOOT_NANDBSP
 
-/*define NAND default partion table*/
+/*define NAND default partion table for qt*/
 
 #define WEBEE210QT 1
-
 
 
 /* IROM specific data */

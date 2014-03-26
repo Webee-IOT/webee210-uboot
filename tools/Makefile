@@ -108,6 +108,7 @@ LIBFDT_OBJ_FILES-y += fdt_rw.o
 LIBFDT_OBJ_FILES-y += fdt_strerror.o
 LIBFDT_OBJ_FILES-y += fdt_wip.o
 
+
 # Generated LCD/video logo
 LOGO_H = $(OBJTREE)/include/bmp_logo.h
 LOGO-$(CONFIG_LCD_LOGO) += $(LOGO_H)

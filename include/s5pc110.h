@@ -84,6 +84,7 @@ typedef enum {
 /* S5PC110 device base addresses */
 #define ELFIN_DMA_BASE			0xE0900000
 #define ELFIN_LCD_BASE			0xF8000000
+#define ELFIN_FB_BASE      0xF8000000 
 #define ELFIN_USB_HOST_BASE		0xEC200000
 #define ELFIN_I2C_BASE			0xE1800000
 #define ELFIN_I2S_BASE			0xE2100000
@@ -1793,6 +1794,10 @@ static inline S5PC11X_CLOCK_POWER * S5PC11X_GetBase_CLOCK_POWER(void)
 static inline S5PC11X_LCD * S5PC11X_GetBase_LCD(void)
 {
 	return (S5PC11X_LCD *)ELFIN_LCD_BASE;
+}
+static inline S5PC11X_FB *S5PC11X_GetBase_FB(void)
+{
+	return (S5PC11X_LCD *)(ELFIN_FB_BASE);
 }
 static inline S5PC11X_UART * S5PC11X_GetBase_UART(S5PC11X_UARTS_NR nr)
 {
