@@ -49,6 +49,41 @@
 
 #define CONFIG_X210  1
 
+/*LCD ang LOGO*/
+#define  CONFIG_LCD_LOGO   1
+#define CONFIG_VIDEO_LOGO 1
+#define LOGO_BMP 1
+#define CONFIG_VIDEO_S5PV210 1
+
+#define SDRAM_MAX_SIZE		0x01000000	/* max 16 MB		*/
+#define SDRAM_RES_SIZE		0x00200000	/* 2 MB for framebuffer */
+
+#define LCD_VIDEO_ADDR		(SDRAM_MAX_SIZE-SDRAM_RES_SIZE)
+#define LCD_VIDEO_SIZE		SDRAM_RES_SIZE	/* 2MB */
+#define LCD_VIDEO_COLS		640
+#define LCD_VIDEO_ROWS		480
+#define LCD_VIDEO_FG		255
+#define LCD_VIDEO_BG		0
+#define CONFIG_SYS_VIDEO_VCLOCK_HZ     (133000000)
+
+#undef	CONFIG_VIDEO				/* test only ! s.a devices.c and 8xx */
+#define CONFIG_CFB_CONSOLE			/* framebuffer console with std input */
+
+
+#define VIDEO_KBD_INIT_FCT	0		/* no KBD dev on MHPC - use serial */
+#define VIDEO_TSTC_FCT		serial_tstc
+#define VIDEO_GETC_FCT		serial_getc
+
+#define CONFIG_BR0_WORKAROUND	1
+
+
+
+
+
+
+
+
+
 
 /* Fastboot variables */
 #define CFG_FASTBOOT_TRANSFER_BUFFER		(0x40000000)
@@ -65,10 +100,9 @@
 */
 #define CFG_FASTBOOT_NANDBSP
 
-/*define NAND default partion table*/
+/*define NAND default partion table for qt*/
 
 #define WEBEE210QT 1
-
 
 
 /* IROM specific data */

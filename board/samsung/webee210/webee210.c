@@ -34,9 +34,11 @@
 #include <asm/arch/mmc.h>
 #include <asm/arch/clk.h> 
 #include <asm/arch/clock.h> 
+#include <video_fb.h>
 /*Add by lk for DM9000 driver */
 //#include <drivers/net/dm9000x.h>
 #include <netdev.h>
+#include <asm/arch/regs-fb.h>
 
 /* ------------------------------------------------------------------------- */
 #define SMC9115_Tacs	(0x0)	// 0clk		address set-up
@@ -155,8 +157,29 @@ static void pwm_pre_init(void)
 //        printf("GPD0CON  : %x, GPD0DAT  : %x\n", readl(GPD0CON), readl(GPD0DAT));
 }
 
+static int video_lcd_io_init(void)
+{
+  
+	writel(0x22222222, GPF0CON);    //GPF0CON set GPF0[0:7] as HSYNC,VSYNC,VDEN,VCLK,VD[0:3]
+	writel(0x0, GPF0PUD);      //GPF0PUD set pull-up,down disable
+	writel(0x22222222, GPF1CON);    //set GPF1CON[7:0] as VD[11:4]
+	writel(0x0, GPF1PUD);      //GPF1PUD set pull-up,down disable
+	writel(0x22222222, GPF2CON);    //set GPF2CON[7:0] as VD[19:12]
+	writel(0x0, GPF2PUD);      //GPF2PUD set pull-up,down disable
+	writel(0x00002222, GPF3CON);    //set GPF3CON[3:0] as VD[23:20]
+	writel(0x0, GPF3PUD);      //GPF3PUD set pull-up,down disable
+	//--------- S5PC110 EVT0 needs MAX drive strength---------//
+	writel(0xffffffff, GPF0DRV);    //set GPF0DRV drive strength max by WJ.KIM(09.07.17)
+	writel(0xffffffff, GPF1DRV);    //set GPF1DRV drive strength max by WJ.KIM(09.07.17)
+	writel(0xffffffff, GPF2DRV);    //set GPF2DRV drive strength max by WJ.KIM(09.07.17)
+	writel(0x3ff, GPF3DRV);     //set GPF3DRV drive strength max by WJ.KIM(09.07.17)
+	return 0;
+}
+
 int board_init(void)
 {
+      
+	video_lcd_io_init();
 	/* Set Initial global variables */
 	s5pc110_gpio = (struct s5pc110_gpio *)S5PC110_GPIO_BASE;
 
@@ -175,6 +198,20 @@ int board_init(void)
 	return 0;
 }
 
+void board_video_init(GraphicDevice *pGD) 
+{
+	//DISPLAY_CONTROL_REG = 0x2; //DISPLAY_CONTROL output path RGB=FIMD I80=FIMD ITU=FIMD
+	*(volatile unsigned long *)(0xE0107008) = 0x2;
+	
+	//CLK_SRC1_REG = 0x700000;  //CLK_SRC1 fimdclk = EPLL
+	*(volatile unsigned long *)(0xE0100204) = 0x700000;
+} 
+void board_video_reset()
+{
+	S5PC11X_FB * const fb = S5PC11X_GetBase_FB();
+	fb->WINCON1 &= ~(S3C_WINCON_BPPMODE_16BPP_565 | S3C_WINCON_ENWIN_ENABLE |
+	S3C_WINCON_HAWSWP_ENABLE);
+} 
 int dram_init(void)
 {
 	/* Since we have discontinuous RAM configuration, just put
