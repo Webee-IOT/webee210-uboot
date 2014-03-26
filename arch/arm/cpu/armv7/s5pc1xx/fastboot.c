@@ -2794,11 +2794,11 @@ int fastboot_init(struct cmd_fastboot_interface *interface)
 	device_strings[DEVICE_STRING_MANUFACTURER_INDEX]  = "Samsung S.LSI";
 #if defined(CONFIG_SMDKC100)
 	device_strings[DEVICE_STRING_PRODUCT_INDEX]       = "smdkc100";
-#elif defined(CONFIG_X210)
+#elif defined(CONFIG_WEBEE210)
 #if !defined(CONFIG_MCP_SINGLE)
-	device_strings[DEVICE_STRING_PRODUCT_INDEX]       = "gec210";
+	device_strings[DEVICE_STRING_PRODUCT_INDEX]       = "webee210";
 #else
-	device_strings[DEVICE_STRING_PRODUCT_INDEX]       = "gec210";
+	device_strings[DEVICE_STRING_PRODUCT_INDEX]       = "webee210";
 #endif
 #else
 	/* Default, An error message to prompt user */
