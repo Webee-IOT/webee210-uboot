@@ -412,11 +412,11 @@ void main_loop (void)
 	/*
 	 * Main Loop for Monitor Command Processing
 	 */
-	board_video_reset();
 #ifdef CONFIG_SYS_HUSH_PARSER
 	parse_file_outer();
 	/* This point is never reached */
 	for (;;);
+	board_video_reset();
 #else
 	for (;;) {
 #ifdef CONFIG_BOOT_RETRY_TIME

@@ -16,4 +16,11 @@ void	video_putc	(const char c);
 void	video_puts	(const char *s);
 void	video_printf	(const char *fmt, ...);
 
+/*
+ * printf char on anyplace of lcd
+ * write by izobs
+ *                              */
+
+void   video_draw_string(int x,int y,const char *string);
+
 #endif

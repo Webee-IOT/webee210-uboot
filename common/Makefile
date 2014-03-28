@@ -46,6 +46,7 @@ COBJS-y += cmd_version.o
 COBJS-y += cmd_wb_lcd.o
 COBJS-y += wb_lcd.o
 COBJS-y += cmd_led.o
+COBJS-y += cmd_drawchar.o
 COBJS-y += cmd_uart3.o
 COBJS-y += cmd_sound.o
 

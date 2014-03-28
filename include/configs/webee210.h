@@ -86,11 +86,21 @@
 #define VIDEO_TSTC_FCT  serial_tstc   /*keyboard_tstc function*/
 #define VIDEO_GETC_FCT  serial_getc   /*keyboard_getc function*/
 
-#define CONFIG_EXTRA_ENV_SETTINGS     \
- "stdin=serial\0"      \
- "stdout=vga\0"       \
- "stderr=vga\0"
- 
+/*#define DEBUG_CFB_CONSOLE_LCD*/
+
+#ifdef DEBUG_CFB_CONSOLE_LCD
+	#define CONFIG_EXTRA_ENV_SETTINGS     \
+	"stdin=serial\0"      \
+	"stdout=vga\0"       \
+	"stderr=serial\0"	    \
+	""
+	#define VIDEO_LOGO_X 180
+	#define VIDEO_LOGO_Y  18
+#else
+	#define VIDEO_LOGO_X 180
+	#define VIDEO_LOGO_Y  120
+#endif
+
 
 #if defined(LCD_VIDEO_BACKGROUND)  
 	#define LCD_VIDEO_BACKGROUND_ADDR         	(0x47f00000) 

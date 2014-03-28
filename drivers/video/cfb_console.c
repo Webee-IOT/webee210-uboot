@@ -592,6 +592,15 @@ static inline void video_drawstring(int xx, int yy, unsigned char *s)
 	video_drawchars(xx, yy, s, strlen((char *) s));
 }
 
+/*video_draw_string,draw string on lcd          
+ * writen by izobs            */
+
+void  video_draw_string(int x,int y,unsigned char*string)
+{
+	video_drawstring(x,y,string);		
+}
+
+
 static void video_putchar(int xx, int yy, unsigned char c)
 {
 	video_drawchars(xx, yy + video_logo_height, &c, 1);
@@ -1589,10 +1598,13 @@ static void *video_logo(void)
 	}
 #endif /* CONFIG_SPLASH_SCREEN */
 			/*change the plot of logo*/
-	logo_plot(video_fb_address, VIDEO_COLS, 180, 140);
+	logo_plot(video_fb_address, VIDEO_COLS, VIDEO_LOGO_X, VIDEO_LOGO_Y);
 
+#ifdef DEBUG_CFB_CONSOLE_LCD
+	sprintf(info, " %s"," " );
+#else
 	sprintf(info, " %s", version_string);
-
+#endif
 	space = (VIDEO_LINE_LEN / 2 - VIDEO_INFO_X) / VIDEO_FONT_WIDTH;
 	len = strlen(info);
 
