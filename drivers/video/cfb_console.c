@@ -295,8 +295,8 @@ void console_cursor(int state);
 #define VIDEO_LOGO_LUT_OFFSET	LINUX_LOGO_LUT_OFFSET
 #define VIDEO_LOGO_COLORS	LINUX_LOGO_COLORS
 #endif /* CONFIG_VIDEO_BMP_LOGO */
-#define VIDEO_INFO_X		(VIDEO_LOGO_WIDTH/2)
-#define VIDEO_INFO_Y		(VIDEO_FONT_HEIGHT/2)
+#define VIDEO_INFO_X		(0)
+#define VIDEO_INFO_Y		(VIDEO_FONT_HEIGHT)
 #else  /* CONFIG_VIDEO_LOGO */
 #define VIDEO_LOGO_WIDTH	0
 #define VIDEO_LOGO_HEIGHT	0
@@ -591,6 +591,15 @@ static inline void video_drawstring(int xx, int yy, unsigned char *s)
 {
 	video_drawchars(xx, yy, s, strlen((char *) s));
 }
+
+/*video_draw_string,draw string on lcd          
+ * writen by izobs            */
+
+void  video_draw_string(int x,int y,unsigned char*string)
+{
+	video_drawstring(x,y,string);		
+}
+
 
 static void video_putchar(int xx, int yy, unsigned char c)
 {
@@ -1589,10 +1598,13 @@ static void *video_logo(void)
 	}
 #endif /* CONFIG_SPLASH_SCREEN */
 			/*change the plot of logo*/
-	logo_plot(video_fb_address, VIDEO_COLS, 300, 200);
+	logo_plot(video_fb_address, VIDEO_COLS, VIDEO_LOGO_X, VIDEO_LOGO_Y);
 
+#ifdef DEBUG_CFB_CONSOLE_LCD
+	sprintf(info, " %s"," " );
+#else
 	sprintf(info, " %s", version_string);
-
+#endif
 	space = (VIDEO_LINE_LEN / 2 - VIDEO_INFO_X) / VIDEO_FONT_WIDTH;
 	len = strlen(info);
 
