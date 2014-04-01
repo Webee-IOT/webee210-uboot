@@ -485,7 +485,11 @@ void s3c_usb_verify_checksum(void)
 
 	/* checksum calculation */
 	cs_start = (u8*)otg.dn_addr;
+
+		printf("Checksum cs_start is %x.\n\n",cs_start);
 	cs_end = (u8*)(otg.dn_addr+otg.dn_filesize-10);
+
+		printf("Checksum cs_end is %x.\n\n",cs_end);
 	checkSum = 0;
 	while(cs_start < cs_end) {
 		checkSum += *cs_start++;
@@ -496,6 +500,8 @@ void s3c_usb_verify_checksum(void)
 	dnCS = (u16)((cs_end[1]<<8) + cs_end[0]);
 	//dnCS = *(u16 *)cs_end;
 
+		printf("Checksum  is %x.\n\n",checkSum);
+		printf("dnCS  is %x.\n\n",dnCS);
 	if (checkSum == dnCS)
 	{
 		printf("\nChecksum O.K.\n");
