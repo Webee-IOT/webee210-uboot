@@ -17,6 +17,8 @@ void main_menu_usage(void);
 char awaitkey(void);
 int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[]);
 
+
+
 U_BOOT_CMD(                                                                                        
     menu, CONFIG_SYS_MAXARGS, 0, do_menu,
 	"menu - display a menu,make your choose convenient\n",                                     
@@ -24,10 +26,67 @@ U_BOOT_CMD(
 	);                                                                                
 
 
+void mydelay(long num)
+{
+	long i,j;
+	for(i=0;i<num;i++)
+		for(j=0;j<65530;j++);
+}
+
+int SDautoburning()
+{
+	char cmd_buf[200];
+	
+	printf("\n");
+
+	strcpy(cmd_buf, "drawstring 280 330 erase.chip..........");
+	run_command(cmd_buf, 0);
+
+	mydelay(50000);
+	strcpy(cmd_buf, "nand erase.chip ");
+	run_command(cmd_buf, 0);
+
+	mydelay(50000);
+	mydelay(50000);
+	mydelay(50000);
+	
+	strcpy(cmd_buf, "drawstring 280 330 seting-env..........");
+		strcpy(cmd_buf, "setenv bootargs noinitrd root=/dev/mtdblock2 init=/linuxrc console=ttySAC0,115200 rootfstype=yaffs2 mem=512M");
+		run_command(cmd_buf, 0);
+		strcpy(cmd_buf, "setenv bootcmd 'nand read 0x30007fc0 0x100000 0x500000;bootm 0x30007fc0'; save");
+		run_command(cmd_buf, 0);
+
+	mydelay(50000);
+	mydelay(50000);
+
+
+	strcpy(cmd_buf, "drawstring 280 330 burning-img,please-wait-20-min.........");
+	run_command(cmd_buf, 0);
+
+	mydelay(50000);
+
+	strcpy(cmd_buf, "sdfuse flashall");
+	run_command(cmd_buf, 0);
+
+	return 1;
+}
+
 	int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])                           
 	{                                                          
-			menu_shell();                                                
-			                                                             
+
+		char cmd_buf[200];
+//			menu_shell();                                                
+			if(SDautoburning() == 1)
+			{
+				strcpy(cmd_buf, "drawstring 280 330 burning-done..........");
+				run_command(cmd_buf, 0);
+
+				mydelay(50000);
+				mydelay(50000);
+				strcpy(cmd_buf, "drawstring 280 330 booting-the-system-form-nand..........");
+				run_command(cmd_buf, 0);
+			}
+
 			return 0;                                                   
 	}
 	
@@ -100,6 +159,7 @@ U_BOOT_CMD(
 				
 				case '5':
 				{
+
 					printf("\n");
 					printf("Boot the linux (YAFFS2)\n");
 					strcpy(cmd_buf, "setenv bootargs noinitrd root=/dev/mtdblock2 init=/linuxrc console=ttySAC0,115200 rootfstype=yaffs2 mem=512M");
@@ -115,6 +175,7 @@ U_BOOT_CMD(
 				
 				case 'e':
 				{
+
 					printf("\n");
 					strcpy(cmd_buf, "nand erase.chip ");
 					printf("Are you want to erase whole nand flash? (y or n)\n");
