@@ -41,6 +41,15 @@
 
 #include <post.h>
 
+#ifdef CONFIG_UBOOT_KEY
+
+#include <s5pc110.h>
+#include <asm/io.h>
+#include <asm/arch/gpio.h>
+
+static struct s5pc110_gpio *s5pc110_gpio;
+#endif
+
 #if defined(CONFIG_SILENT_CONSOLE) || defined(CONFIG_POST) || defined(CONFIG_CMDLINE_EDITING)
 DECLARE_GLOBAL_DATA_PTR;
 #endif
@@ -51,6 +60,8 @@ DECLARE_GLOBAL_DATA_PTR;
 void inline __show_boot_progress (int val) {}
 void show_boot_progress (int val) __attribute__((weak, alias("__show_boot_progress")));
 extern void board_video_reset();
+
+char inline check_key(char key);
 
 #if defined(CONFIG_UPDATE_TFTP)
 int update_tftp (ulong addr);
@@ -213,6 +224,14 @@ static inline int abortboot(int bootdelay)
 	printf("Hit any key to stop autoboot: %2d ", bootdelay);
 #endif
 
+
+#ifdef CONFIG_UBOOT_KEY
+	if(0 == check_key(0))
+	{
+		abort =1 ;
+	}
+#endif
+
 #if defined CONFIG_ZERO_BOOTDELAY_CHECK
 	/*
 	 * Check if key already pressed
@@ -236,9 +255,9 @@ static inline int abortboot(int bootdelay)
 			if (tstc()) {	/* we got a key press	*/
 				abort  = 1;	/* don't auto boot	*/
 				bootdelay = 0;	/* no more delay	*/
-# ifdef CONFIG_MENUKEY
+#ifdef CONFIG_MENUKEY
 				menukey = getc();
-# else
+#else
 				(void) getc();  /* consume input	*/
 # endif
 				break;
@@ -1243,6 +1262,22 @@ static void process_macros (const char *input, char *output)
 	printf ("[PROCESS_MACROS] OUTPUT len %d: \"%s\"\n",
 		strlen (output_start), output_start);
 #endif
+}
+
+
+char inline check_key(char key)
+{
+	char value = 1;
+	s5pc110_gpio = (struct s5pc110_gpio *)S5PC110_GPIO_BASE;
+
+	s5p_gpio_direction_input(&s5pc110_gpio->h2, key);
+	value = s5p_gpio_get_value(&s5pc110_gpio->h2, key);
+	if(0 == value)
+	{
+		 printf("key: S%d value is push\n",key+1);
+		return value;
+	}
+	return value = 1;
 }
 
 /****************************************************************************

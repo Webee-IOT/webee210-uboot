@@ -46,6 +46,7 @@
 
 #define DEBUG 1
 #define CONFIG_FASTBOOT		1
+#define  CONFIG_UBOOT_KEY     /* uboot key fuction */
 
 #define CONFIG_X210  1
 
@@ -57,7 +58,6 @@
 #define CONFIG_LCD_LOGO
 #define   CONFIG_CFB_CONSOLE      
 /*Enables console device for a color framebuffer*/
-#define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE  (800*400+1024+100)   /* 100 = slack */
 #define VIDEO_FB_16BPP_WORD_SWAP
 #define VIDEO_FB_16BPP_PIXEL_SWAP     /*the color palette,bpp is bits per pixel*/
 #define CONFIG_VIDEO              /*Video support*/
