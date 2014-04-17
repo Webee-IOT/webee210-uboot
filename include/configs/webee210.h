@@ -86,7 +86,8 @@
 #define VIDEO_TSTC_FCT  serial_tstc   /*keyboard_tstc function*/
 #define VIDEO_GETC_FCT  serial_getc   /*keyboard_getc function*/
 
-/*#define DEBUG_CFB_CONSOLE_LCD*/
+/* open console on lcd */
+#define DEBUG_CFB_CONSOLE_LCD
 
 #ifdef DEBUG_CFB_CONSOLE_LCD
 	#define CONFIG_EXTRA_ENV_SETTINGS     \
@@ -248,12 +249,15 @@
 /*
 #define CONFIG_CMD_MMC
 */
+/* auto burning img from sd */
+#define CONFIG_SD_AUTO_BURN  
+
 #define CONFIG_CMD_FAT
 #if 0
 //#undef CONFIG_CMD_NET
 //#undef CONFIG_CMD_NFS
 #endif
-#define CONFIG_BOOTDELAY		3
+#define CONFIG_BOOTDELAY		5
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
 /* Miscellaneous configurable options */

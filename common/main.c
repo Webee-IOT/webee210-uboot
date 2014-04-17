@@ -226,10 +226,17 @@ static inline int abortboot(int bootdelay)
 
 
 #ifdef CONFIG_UBOOT_KEY
+	
+	run_command("drawstring 280 330 hit-S1-to-burn-*.img..........",0);
+	udelay(10000);
+	udelay(10000);
+	udelay(10000);
+
 	if(0 == check_key(0))
 	{
 		abort =1 ;
 	}
+
 #endif
 
 #if defined CONFIG_ZERO_BOOTDELAY_CHECK
@@ -251,6 +258,18 @@ static inline int abortboot(int bootdelay)
 
 		--bootdelay;
 		/* delay 100 * 10ms */
+
+#ifdef CONFIG_UBOOT_KEY
+	
+	run_command("drawstring 280 330 hit-S1-to-burn-*.img..........",0);
+	udelay(10000);
+
+		if(0 == check_key(0))
+		{
+			abort =1 ;
+		}
+#endif
+
 		for (i=0; !abort && i<100; ++i) {
 			if (tstc()) {	/* we got a key press	*/
 				abort  = 1;	/* don't auto boot	*/

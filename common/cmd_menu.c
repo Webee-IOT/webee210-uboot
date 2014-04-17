@@ -71,11 +71,12 @@ int SDautoburning()
 	return 1;
 }
 
-	int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])                           
-	{                                                          
+int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])                           
+{                                                          
 
-		char cmd_buf[200];
-//			menu_shell();                                                
+	char cmd_buf[200];
+
+#ifdef CONFIG_SD_AUTO_BURN
 			if(SDautoburning() == 1)
 			{
 				strcpy(cmd_buf, "drawstring 280 330 burning-done..........");
@@ -86,72 +87,76 @@ int SDautoburning()
 				strcpy(cmd_buf, "drawstring 280 330 booting-the-system-form-nand..........");
 				run_command(cmd_buf, 0);
 			}
+#else
+
+			menu_shell();                                                
+#endif
 
 			return 0;                                                   
 	}
 	
-	void menu_shell(void)
-	{
-		char c;
-		char cmd_buf[200];
+void menu_shell(void)
+{
+	char c;
+	char cmd_buf[200];
 
 	while(1)
+	{
+		main_menu_usage();
+		 c = awaitkey();
+		 printf("%c\n", c);     
+
+		switch (c)
 		{
-			main_menu_usage();
-			 c = awaitkey();
-			 printf("%c\n", c);     
-
-			switch (c)
+			case '1':
 			{
-				case '1':
-				{
-					printf("\n");
-					printf("Download the uboot into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x30000000");
-					run_command(cmd_buf, 0);
+				printf("\n");
+				printf("Download the uboot into Nand flash by DNW\n");
+				strcpy(cmd_buf, "dnw 0x30000000");
+				run_command(cmd_buf, 0);
 					
-					strcpy(cmd_buf, "nand erase  0 0x80000");
-					run_command(cmd_buf, 0);
+				strcpy(cmd_buf, "nand erase  0 0x80000");
+				run_command(cmd_buf, 0);
 					
-					sprintf(cmd_buf,"nand write 0x30000000 0 %x",usb_download_filesize);
-					run_command(cmd_buf, 0);
-					break;
+				sprintf(cmd_buf,"nand write 0x30000000 0 %x",usb_download_filesize);
+				run_command(cmd_buf, 0);
+				break;
+			}
+			
+			case '2':
+			{
+				printf("\n");
+				printf("Download the kernel into Nand flash by DNW\n");
+				strcpy(cmd_buf, "dnw 0x30000000");
+				run_command(cmd_buf, 0);
+				
+				strcpy(cmd_buf, "nand erase  0x100000 0x300000");
+				run_command(cmd_buf, 0);
+					
+				sprintf(cmd_buf,"nand write 0x30000000 0x100000 %x",usb_download_filesize);
+				run_command(cmd_buf, 0);
+				break;
 				}
 				
-				case '2':
-				{
-					printf("\n");
-					printf("Download the kernel into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x30000000");
-					run_command(cmd_buf, 0);
-					
-					strcpy(cmd_buf, "nand erase  0x100000 0x300000");
-					run_command(cmd_buf, 0);
-					
-					sprintf(cmd_buf,"nand write 0x30000000 0x100000 %x",usb_download_filesize);
-					run_command(cmd_buf, 0);
-					break;
-				}
-				
-				case '3':
-				{
-					printf("\n");
-					printf("Download the filesystem into Nand flash by DNW\n");
-					strcpy(cmd_buf, "dnw 0x30000000");
-					run_command(cmd_buf, 0);
+			case '3':
+			{
+				printf("\n");
+				printf("Download the filesystem into Nand flash by DNW\n");
+				strcpy(cmd_buf, "dnw 0x30000000");
+				run_command(cmd_buf, 0);
 
-					strcpy(cmd_buf, "nand erase  0x600000 0x12c00000");/*erase 300M*/
-					run_command(cmd_buf, 0);
+				strcpy(cmd_buf, "nand erase  0x600000 0x12c00000");/*erase 300M*/
+				run_command(cmd_buf, 0);
 					
-					sprintf(cmd_buf,"nand write.yaffs 0x30000000 0x600000 %x",usb_download_filesize);
-					run_command(cmd_buf, 0);
-					break;
-				}
+				sprintf(cmd_buf,"nand write.yaffs 0x30000000 0x600000 %x",usb_download_filesize);
+				run_command(cmd_buf, 0);
+				break;
+			}
 				
-				case '4':                                                                                                              
-				{                                                                                                                      
-				    printf("\n");
-					printf("Download the program(Webee210_test) into RAM and run it \n");
+			case '4':                                                                                                              
+			{                                                                                                                      
+			    printf("\n");
+				printf("Download the program(Webee210_test) into RAM and run it \n");
 				    strcpy(cmd_buf, "dnw 0x30000000;go 0x30000000");
 				    run_command(cmd_buf, 0);                                                                                       
 				    break;                                                                                               
