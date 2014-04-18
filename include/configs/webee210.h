@@ -44,7 +44,7 @@
 #define CONFIG_MCP_SINGLE	1
 #define CONFIG_EVT1		1		/* EVT1 */
 
-#define DEBUG 1
+/*  #define DEBUG 1 */
 #define CONFIG_FASTBOOT		1
 #define  CONFIG_UBOOT_KEY     /* uboot key fuction */
 
@@ -246,9 +246,9 @@
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_ELF
 #define CONFIG_CMD_DHCP
-/*
+
 #define CONFIG_CMD_MMC
-*/
+
 /* auto burning img from sd */
 /*#define CONFIG_SD_AUTO_BURN */
 
@@ -547,7 +547,7 @@
 /***Modified by lk ***/
 #define CONFIG_ETHADDR		00:40:5c:26:0a:5b
 #define CONFIG_NETMASK          255.255.255.0
-#define CONFIG_IPADDR		192.168.186.13
+#define CONFIG_IPADDR		192.168.0.123
 #define CONFIG_SERVERIP		192.168.186.13
 #define CONFIG_GATEWAYIP	192.168.0.1
 /*   For nand driver   */
