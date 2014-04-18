@@ -76,7 +76,6 @@
 #define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE    (1024*768+1024+100)  /* 100 = slack */ 
 /*#define CONFIG_VGA_AS_SINGLE_DEVICE*/
 #define CFG_CONSOLE_INFO_QUIET
-#define DEBUG_CFB_CONSOLE
 #define LCD_VIDEO_ADDR        (0x35000000)      
 /*#define LCD_VIDEO_ADDR         (0x57a00000)*/
 /*#define LCD_VIDEO_BACKGROUND*/
@@ -87,9 +86,10 @@
 #define VIDEO_GETC_FCT  serial_getc   /*keyboard_getc function*/
 
 /* open console on lcd */
-#define DEBUG_CFB_CONSOLE_LCD
+#define DEBUG_CFB_CONSOLE_LCD 
 
 #ifdef DEBUG_CFB_CONSOLE_LCD
+	#define DEBUG_CFB_CONSOLE
 	#define CONFIG_EXTRA_ENV_SETTINGS     \
 	"stdin=serial\0"      \
 	"stdout=vga\0"       \
@@ -250,7 +250,7 @@
 #define CONFIG_CMD_MMC
 */
 /* auto burning img from sd */
-#define CONFIG_SD_AUTO_BURN  
+/*#define CONFIG_SD_AUTO_BURN */
 
 #define CONFIG_CMD_FAT
 #if 0

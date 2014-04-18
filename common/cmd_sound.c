@@ -200,7 +200,6 @@ void sound_test(void)
 	hareware_init();
 	int offset = 0x2E;						// ÒôÆµÊýŸÝ¿ªÊŒµÄµØ·œ
 	short * p = (short *)0x30000000;	
-#if 0
 	while (1)
 	{
 		// polling  Primary Tx FIFO0 full status indication. 
@@ -213,7 +212,6 @@ void sound_test(void)
 			offset = 0x2E;
 	}
 
-#endif
 }
 U_BOOT_CMD(                                                                                                                                                                     
     sound, CONFIG_SYS_MAXARGS, 0, sound_test,                                                                                                                                      

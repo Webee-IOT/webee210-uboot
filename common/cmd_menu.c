@@ -11,11 +11,19 @@
 #include <asm/byteorder.h>
 #include <linux/compiler.h>  
 
+#include <s5pc110.h>
+#include <asm/io.h>
+#include <asm/arch/gpio.h>
+
+static struct s5pc110_gpio *s5pc110_gpio;
+
 extern u32 usb_download_filesize; 
 void menu_shell(void);
 void main_menu_usage(void);
 char awaitkey(void);
+char await_check_button();
 int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[]);
+char check_button(void);
 
 
 
@@ -79,6 +87,7 @@ int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 #ifdef CONFIG_SD_AUTO_BURN
 			if(SDautoburning() == 1)
 			{
+
 				strcpy(cmd_buf, "drawstring 280 330 burning-done..........");
 				run_command(cmd_buf, 0);
 
@@ -86,13 +95,19 @@ int do_menu (cmd_tbl_t *cmdtp, int flag, int argc, char *argv[])
 				mydelay(50000);
 				strcpy(cmd_buf, "drawstring 280 330 booting-the-system-form-nand..........");
 				run_command(cmd_buf, 0);
-			}
-#else
 
-			menu_shell();                                                
-#endif
+				strcpy(cmd_buf, "nand read 0x30007fc0 0x100000 0x500000");
+				run_command(cmd_buf, 0);
+				strcpy(cmd_buf, "bootm 0x30007fc0");
+				run_command(cmd_buf, 0);
+
+			}
 
 			return 0;                                                   
+#else
+			menu_shell();                                                
+			return 0;                                                   
+#endif
 	}
 	
 void menu_shell(void)
@@ -103,13 +118,23 @@ void menu_shell(void)
 	while(1)
 	{
 		main_menu_usage();
+#ifdef DEBUG_CFB_CONSOLE_LCD 
+		c = await_check_button();
+		if(c != 255)
+			c = c+1+'0';
+		else
+			c = 0;
+#else
 		 c = awaitkey();
+#endif
+
 		 printf("%c\n", c);     
 
 		switch (c)
 		{
 			case '1':
 			{
+/*  
 				printf("\n");
 				printf("Download the uboot into Nand flash by DNW\n");
 				strcpy(cmd_buf, "dnw 0x30000000");
@@ -121,11 +146,18 @@ void menu_shell(void)
 				sprintf(cmd_buf,"nand write 0x30000000 0 %x",usb_download_filesize);
 				run_command(cmd_buf, 0);
 				break;
+				
+				*/
+				break;
+
 			}
 			
 			case '2':
 			{
-				printf("\n");
+				printf("buring img to SD...\n");
+				SDautoburning();
+				break;
+/*  
 				printf("Download the kernel into Nand flash by DNW\n");
 				strcpy(cmd_buf, "dnw 0x30000000");
 				run_command(cmd_buf, 0);
@@ -136,6 +168,7 @@ void menu_shell(void)
 				sprintf(cmd_buf,"nand write 0x30000000 0x100000 %x",usb_download_filesize);
 				run_command(cmd_buf, 0);
 				break;
+				*/
 				}
 				
 			case '3':
@@ -171,6 +204,7 @@ void menu_shell(void)
 					run_command(cmd_buf, 0);
 					strcpy(cmd_buf, "setenv bootcmd 'nand read 0x30007fc0 0x100000 0x500000;bootm 0x30007fc0'; save");
 					run_command(cmd_buf, 0);
+
 					strcpy(cmd_buf, "nand read 0x30007fc0 0x100000 0x500000");
 					run_command(cmd_buf, 0);
 					strcpy(cmd_buf, "bootm 0x30007fc0");
@@ -286,7 +320,39 @@ void menu_shell(void)
 	   	printf("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 		printf("\nEnter your selection: ");   	                                                                                                     
 	}                      
-	
+
+
+char check_button()
+{
+	char key_value = 1;
+	char i;
+	s5pc110_gpio = (struct s5pc110_gpio *)S5PC110_GPIO_BASE;
+	for(i=0;i<3;i++)
+	{
+		s5p_gpio_direction_input(&s5pc110_gpio->h2, i);
+		key_value = s5p_gpio_get_value(&s5pc110_gpio->h2, i);
+		if(0 == key_value) 
+		{
+			key_value = 1;
+			return i;
+			break;
+		}
+	}
+	return 255;
+}
+
+char await_check_button()
+{
+	char c;
+	int i;
+
+	while(1)
+	{
+		if(check_button() != 255)
+			return check_button();
+	}
+	return 0;
+}
 
 
 	/*keyboard scan*/
