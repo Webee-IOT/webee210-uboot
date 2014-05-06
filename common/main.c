@@ -227,7 +227,7 @@ static inline int abortboot(int bootdelay)
 
 #ifdef CONFIG_UBOOT_KEY
 	
-	run_command("drawstring 280 330 hit-S1-to-burn-*.img..........",0);
+	//run_command("drawstring 280 330 hit-S1-to-burn-*.img..........",0);
 	udelay(10000);
 	udelay(10000);
 	udelay(10000);
@@ -260,9 +260,6 @@ static inline int abortboot(int bootdelay)
 		/* delay 100 * 10ms */
 
 #ifdef CONFIG_UBOOT_KEY
-	
-	run_command("drawstring 280 330 hit-S1-to-burn-*.img..........",0);
-	udelay(10000);
 
 		if(0 == check_key(0))
 		{
