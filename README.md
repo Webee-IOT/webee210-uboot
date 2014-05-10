@@ -29,13 +29,14 @@ __1.在linux环境下__
 	sudo ./sd-burn.sh /dev/mmcblk0
 
 __2.在windows环境下__
-coming soon.........
+
+	coming soon.........
 
 ###uboot SD烧写镜像文件
 在SD卡里建一个文件夹，名字为webee210，把uboot，内核，文件系统分别命名为：
 `uboot.bin`,`kernel.img`,`system.img`。然后存放于该目录。如下:
 
-|-- webee210
-|   |-- kernel.img
-|   |-- system.img
-|   |-- uboot.bin
+	|-- webee210
+	|   |-- kernel.img
+	|   |-- system.img
+	|   |-- uboot.bin
