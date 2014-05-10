@@ -2,7 +2,7 @@
 
 如果你想参与本__webee210-uboot__的开发,请用力hit下面的链接:
 
-[webee210-uboot开发指南](https://github.com/iZobs/webee210v1-uboot/blob/master/Develop-doc.md)
+[webee210-uboot开发指南](https://github.com/iZobs/webee210-uboot/blob/master/Develop-doc.md)
 
 ###关于
 这是网蜂webee210v2的uboot程序,它使用于webee210V2开发板。

@@ -1,6 +1,6 @@
 ###webee210-uboot的开发指南
 
-如果想参与本项目的开发,请确保你已经看过[网蜂开发者社区简介](https://github.com/Webee-IOT/Document/blob/master/%E7%BD%91%E8%9C%82%E5%BC%80%E5%8F%91%E8%80%85%E7%A4%BE%E5%8C%BA%E7%AE%80%E4%BB%8B.md),并且已经拥有了上面提到的`github`和`gmail`.你只需要从[webee210v2-uboot](https://github.com/iZobs/webee210v2-uboot)fork这个项目,从__自己主页__git clone 下来，并且加入这个邮件列表就可以了:[webee210-uboot-google-groups](https://groups.google.com/d/forum/webee210-uboot).该项目有两个分支一个为`master`,另一个为
+如果想参与本项目的开发,请确保你已经看过[网蜂开发者社区简介](https://github.com/Webee-IOT/Document/blob/master/%E7%BD%91%E8%9C%82%E5%BC%80%E5%8F%91%E8%80%85%E7%A4%BE%E5%8C%BA%E7%AE%80%E4%BB%8B.md),并且已经拥有了上面提到的`github`和`gmail`.你只需要从[webee210-uboot](https://github.com/iZobs/webee210-uboot)fork这个项目,从__自己主页__git clone 下来，并且加入这个邮件列表就可以了:[webee210-uboot-google-groups](https://groups.google.com/d/forum/webee210-uboot).该项目有两个分支一个为`master`,另一个为
 `dev`.`dev`分支为开发分支,有TODO列表正在开发的功能,bug也比较多.`master`是稳定版,拥有`TODO`列表已经完成的功能,你可以在这条分支上debug.
 
 例如下面的TODO:
