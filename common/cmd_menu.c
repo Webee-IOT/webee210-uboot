@@ -148,7 +148,7 @@ void menu_shell(void)
 				printf("\n");
 				printf("[S4] Burning  Kernel.img\n");
 				strcpy(cmd_buf,
-					"sdfuse flash uboot kernel.img");
+					"sdfuse flash kernel kernel.img");
 				run_command(cmd_buf, 0);
 				break;
 			}
